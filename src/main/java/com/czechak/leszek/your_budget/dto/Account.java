@@ -1,15 +1,17 @@
 package com.czechak.leszek.your_budget.dto;
 
-import com.czechak.leszek.your_budget.repository.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Builder
-@AllArgsConstructor
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Account {
 
     private Long accountId;

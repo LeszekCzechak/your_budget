@@ -8,8 +8,6 @@ import java.util.List;
 @Data
 public class GetAccountsResponse {
 
-    // lista accountEntity
-    // TODO: Co powinno być w tej klasie? jakaś lista account? Po co?
     List<Account> userAccounts;
 
 

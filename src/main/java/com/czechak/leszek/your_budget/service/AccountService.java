@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,19 +39,26 @@ public class AccountService {
     @Transactional
     public GetAccountsResponse getAllUserAccounts() {
 
-        List<AccountEntity> userAcounts = new LinkedList<>();
-
-//        userAcounts.addAll(?);
         List<AccountEntity> accountEntitiesByUserEntity = repository.findAccountEntitiesByUserEntity(userContext.getCurrentUser());
 
         GetAccountsResponse getAccountsResponse = new GetAccountsResponse();
-        getAccountsResponse.setUserAccounts(accountEntitiesByUserEntity.stream().map(x -> {
-            Account account = new Account();
-            account.setUserId(x.getUserEntity().getUserName());
-            return account;
-        }).collect(Collectors.toList()));
+
+        getAccountsResponse.setUserAccounts(accountEntitiesByUserEntity
+                .stream()
+                .map(x -> {
+                    Account account = new Account();
+                    account.setAccountId(x.getAccountId());
+                    account.setAmount(x.getAmount());
+                    account.setCratedOn(x.getCratedOn());
+                    account.setDescription(x.getDescription());
+                    account.setUpdatedOn(x.getUpdatedOn());
+                    account.setUserId(x.getUserEntity().getUserId());
+                    return account;
+                })
+        .collect(Collectors.toList()));
 
         return getAccountsResponse;
+
     }
 
 
