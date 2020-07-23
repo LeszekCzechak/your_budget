@@ -1,0 +1,11 @@
+spring:
+  h2.console:
+    enabled: true
+    path: '/console'
+
+  datasource:
+    url: 'jdbc:h2:file:C:\Users\lesze\IdeaProjects\your_budget\my-budget-db'
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
