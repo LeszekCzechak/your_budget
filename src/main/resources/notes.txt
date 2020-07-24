@@ -1,0 +1,17 @@
+income
+expense
+
+UserController przyjmuje Body i przypisuje je do odpowiedniej klasy Request w dto,
+Następnie UserController odpala metodę z UserService (wysyłając tam obiekt z Request w dto),
+metoda ta tworzy obiekt/edytuje obiekt UserEntity  i zapisuje go do bazy danych
+
+
+usunięcie subkont- transer na konto główne?
+
+wydanie środków na jakiś cel
+adnotacja na co poszedł wydatek ? czy lepiej konto wydatkowe
+adnotacje do przelewu (opis)
+description- klucz obcy (id)
+nazwy kolumn w bazie danych zapisać
+środowisko testujące
+initSQL

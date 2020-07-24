@@ -22,6 +22,7 @@ public class TransferEntity {
     private AccountEntity targetAccount;
     private BigDecimal amount;
     private LocalDateTime transferData;
+    private String description;
 
 
 

@@ -5,10 +5,8 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 @Data
-public class TransferFromAccountRequest {
+public class PaymentOnAccountRequest {
 
-    private Long userId;
-    private Long selectedAccountId;
     private Long targetAccountId;
     private BigDecimal amount;
     private String description;

@@ -1,5 +1,6 @@
 package com.czechak.leszek.your_budget.controller;
 
+import com.czechak.leszek.your_budget.dto.PaymentOnAccountRequest;
 import com.czechak.leszek.your_budget.dto.TransferFromAccountRequest;
 import com.czechak.leszek.your_budget.service.TransferService;
 import org.springframework.http.ResponseEntity;
@@ -17,9 +18,13 @@ public class TransferController {
     }
 
     @PostMapping("/transfer")
-    public ResponseEntity<Void> transferFromAccountToAccount (
-            @RequestBody TransferFromAccountRequest transferFromAccount){
+    public ResponseEntity<Void> transferFromAccountToAccount (@RequestBody TransferFromAccountRequest transferFromAccount){
         transferService.transferFromAccount(transferFromAccount);
+        return ResponseEntity.ok(null);
+    }
+
+    public ResponseEntity<Void> paymentOnAccount(@RequestBody PaymentOnAccountRequest paymentOnAccount){
+        transferService.paymentOnAccount(paymentOnAccount);
         return ResponseEntity.ok(null);
     }
 

@@ -1,5 +1,6 @@
 package com.czechak.leszek.your_budget.service;
 
+import com.czechak.leszek.your_budget.dto.PaymentOnAccountRequest;
 import com.czechak.leszek.your_budget.dto.TransferFromAccountRequest;
 import com.czechak.leszek.your_budget.model.account.AccountRepository;
 import com.czechak.leszek.your_budget.model.transfer.TransferRepository;
@@ -60,18 +61,35 @@ public class TransferService {
             transferEntity.setSelectedAccount(sourceAccount);
             transferEntity.setTargetAccount(targetAccount);
             transferEntity.setAmount(transferRequest.getAmount());
+            transferEntity.setDescription(transferRequest.getDescription());
             transferRepository.save(transferEntity);
         }
     }
 
     private void transferCashBetweenAccount(TransferFromAccountRequest transferRequest, AccountEntity sourceAccount, AccountEntity targetAccount) {
-        // zmniejszyć stan na selected account - zaktualizować datę
         sourceAccount.setAmount(sourceAccount.getAmount().subtract(transferRequest.getAmount()));
         sourceAccount.setUpdatedOn(LocalDateTime.now());
 
-        // zwiekszyć stan na targeted account
         targetAccount.setAmount(targetAccount.getAmount().add(transferRequest.getAmount()));
         targetAccount.setUpdatedOn(LocalDateTime.now());
     }
 
+    @Transactional
+    public void paymentOnAccount(PaymentOnAccountRequest paymentOnAccount) {
+
+        Optional<AccountEntity> accountEntityOptional = accountRepository.findById(paymentOnAccount.getTargetAccountId());
+        AccountEntity accountEntity=accountEntityOptional.get();
+
+        accountEntity.setAmount(accountEntity.getAmount().add(paymentOnAccount.getAmount()));
+        accountEntity.setUpdatedOn(LocalDateTime.now());
+
+        TransferEntity transferEntity= new TransferEntity();
+
+        transferEntity.setDescription(paymentOnAccount.getDescription());
+        transferEntity.setAmount(paymentOnAccount.getAmount());
+        transferEntity.setTargetAccount(accountEntity);
+        transferEntity.setTransferData(LocalDateTime.now());
+        transferRepository.save(transferEntity);
+
+    }
 }
