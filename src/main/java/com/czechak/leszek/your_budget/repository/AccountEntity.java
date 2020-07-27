@@ -25,6 +25,7 @@ public class AccountEntity {
     private BigDecimal amount;
     private LocalDateTime cratedOn;
     private LocalDateTime updatedOn;
+    private Boolean active;
 
 
 }

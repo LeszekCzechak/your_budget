@@ -30,7 +30,5 @@ public class UserEntity {
     private String mail;
     private String userName;
     private LocalDateTime createUserDate;
-    @OneToMany
-    private List<AccountEntity> accountEntities;
 
 }

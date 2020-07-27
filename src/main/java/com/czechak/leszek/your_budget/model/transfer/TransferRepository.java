@@ -4,7 +4,5 @@ import com.czechak.leszek.your_budget.repository.TransferEntity;
 
 public interface  TransferRepository {
 
-
-
     TransferEntity save(TransferEntity transferEntity);
 }
