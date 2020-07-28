@@ -167,3 +167,11 @@ Caused by: java.nio.channels.OverlappingFileLockException
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "ACCOUNT_ENTITIES_ACCOUNT_ID[*]"; oczekiwano "ALTER, ANALYZE"
 Syntax error in SQL statement "ACCOUNT_ENTITIES_ACCOUNT_ID[*]"; expected "ALTER, ANALYZE"; SQL statement:
 ACCOUNT_ENTITIES_ACCOUNT_ID [42001-200]
+2020-07-28 09:31:46 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLDataException: Błąd konwersji danych "'TRUE.' (ACCOUNTS: ""ACTIVE"" BOOLEAN)"
+Data conversion error converting "'TRUE.' (ACCOUNTS: ""ACTIVE"" BOOLEAN)"; SQL statement:
+UPDATE "PUBLIC"."ACCOUNTS" SET "DTYPE"=? ,"ACCOUNT_ID"=? ,"ACTIVE"=? ,"AMOUNT"=? ,"CRATED_ON"=? ,"DESCRIPTION"=? ,"UPDATED_ON"=? ,"EXPENSE"=? ,"USER_ENTITY_USER_ID"=?  WHERE "ACCOUNT_ID"=? [22018-200]
+2020-07-28 09:31:46 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLDataException: Błąd konwersji danych "'TRUE.' (ACCOUNTS: ""ACTIVE"" BOOLEAN)"
+Data conversion error converting "'TRUE.' (ACCOUNTS: ""ACTIVE"" BOOLEAN)"; SQL statement:
+UPDATE "PUBLIC"."ACCOUNTS" SET "DTYPE"=? ,"ACCOUNT_ID"=? ,"ACTIVE"=? ,"AMOUNT"=? ,"CRATED_ON"=? ,"DESCRIPTION"=? ,"UPDATED_ON"=? ,"EXPENSE"=? ,"USER_ENTITY_USER_ID"=?  WHERE "ACCOUNT_ID"=? [22018-200]

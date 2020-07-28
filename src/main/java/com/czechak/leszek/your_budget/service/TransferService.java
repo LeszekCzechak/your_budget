@@ -1,18 +1,16 @@
 package com.czechak.leszek.your_budget.service;
 
 import com.czechak.leszek.your_budget.dto.PaymentOnAccountRequest;
+import com.czechak.leszek.your_budget.dto.SpendOnPurposeRequest;
 import com.czechak.leszek.your_budget.dto.TransferFromAccountRequest;
 import com.czechak.leszek.your_budget.model.account.AccountRepository;
 import com.czechak.leszek.your_budget.model.transfer.TransferRepository;
 import com.czechak.leszek.your_budget.model.user.UserRepository;
 import com.czechak.leszek.your_budget.repository.AccountEntity;
 import com.czechak.leszek.your_budget.repository.TransferEntity;
-import com.czechak.leszek.your_budget.repository.UserEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -43,14 +41,21 @@ public class TransferService {
         Optional<AccountEntity> targetAccountOptional = accountRepository.findById(transferRequest.getTargetAccountId());
         AccountEntity targetAccount = targetAccountOptional.get();
 
-        boolean sameUser= targetAccount.getUserEntity().equals(sourceAccount.getUserEntity());
+        boolean sameUser = targetAccount.getUserEntity().equals(sourceAccount.getUserEntity());
 
-        boolean enoughCash= (sourceAccount.getAmount()
+        boolean enoughCash = (sourceAccount.getAmount()
                 .subtract(transferRequest.getAmount()))
                 .compareTo(BigDecimal.ZERO)
-                >=0;
+                >= 0;
 
-        if(sameUser && enoughCash){
+        boolean sourceAccountActive = sourceAccount.getActive();
+        boolean targetAccountActive = targetAccount.getActive();
+
+
+        if (sameUser
+                && enoughCash
+                && sourceAccountActive
+                && targetAccountActive) {
 
             TransferEntity transferEntity = new TransferEntity();
 
@@ -66,6 +71,53 @@ public class TransferService {
         }
     }
 
+    @Transactional
+    public void SpendOnPurpose(SpendOnPurposeRequest spendOnPurposeRequest) {
+
+        Optional<AccountEntity> sourceAccountOptional = accountRepository.findById(spendOnPurposeRequest.getSourceAccountId());
+        AccountEntity sourceAccount = sourceAccountOptional.get();
+
+        Optional<AccountEntity> targetAccountOptional = accountRepository.findById(spendOnPurposeRequest.getTargetAccountId());
+        AccountEntity targetAccount = targetAccountOptional.get();
+
+        boolean enoughCash = (sourceAccount.getAmount()
+                .subtract(spendOnPurposeRequest.getAmount())
+                .compareTo(BigDecimal.ZERO)
+                >= 0);
+
+
+        boolean sourceAccountActive = sourceAccount.getActive();
+        boolean targetAccountActive = targetAccount.getActive();
+        boolean sourceAccountExpense = sourceAccount.getExpense();
+        boolean targetAccountExpense = targetAccount.getExpense();
+
+        if (enoughCash
+                && sourceAccountActive
+                && targetAccountActive
+                && !sourceAccountExpense
+                && targetAccountExpense
+        ) {
+            TransferEntity transferEntity = new TransferEntity();
+
+            sourceAccount.setAmount(sourceAccount.getAmount().subtract(spendOnPurposeRequest.getAmount()));
+            sourceAccount.setUpdatedOn(LocalDateTime.now());
+
+            targetAccount.setAmount(sourceAccount.getAmount().add(spendOnPurposeRequest.getAmount()));
+            targetAccount.setUpdatedOn(LocalDateTime.now());
+
+
+            transferEntity.setTransferData(LocalDateTime.now());
+            transferEntity.setUserEntity(userContext.getCurrentUser());
+            transferEntity.setSelectedAccount(sourceAccount);
+            transferEntity.setTargetAccount(targetAccount);
+            transferEntity.setAmount(spendOnPurposeRequest.getAmount());
+            transferEntity.setDescription(spendOnPurposeRequest.getDescription());
+            transferRepository.save(transferEntity);
+
+        }
+
+    }
+
     private void transferCashBetweenAccount(TransferFromAccountRequest transferRequest, AccountEntity sourceAccount, AccountEntity targetAccount) {
         sourceAccount.setAmount(sourceAccount.getAmount().subtract(transferRequest.getAmount()));
         sourceAccount.setUpdatedOn(LocalDateTime.now());
@@ -78,12 +130,12 @@ public class TransferService {
     public void paymentOnAccount(PaymentOnAccountRequest paymentOnAccount) {
 
         Optional<AccountEntity> accountEntityOptional = accountRepository.findById(paymentOnAccount.getTargetAccountId());
-        AccountEntity accountEntity=accountEntityOptional.get();
+        AccountEntity accountEntity = accountEntityOptional.get();
 
         accountEntity.setAmount(accountEntity.getAmount().add(paymentOnAccount.getAmount()));
         accountEntity.setUpdatedOn(LocalDateTime.now());
 
-        TransferEntity transferEntity= new TransferEntity();
+        TransferEntity transferEntity = new TransferEntity();
 
         transferEntity.setDescription(paymentOnAccount.getDescription());
         transferEntity.setAmount(paymentOnAccount.getAmount());

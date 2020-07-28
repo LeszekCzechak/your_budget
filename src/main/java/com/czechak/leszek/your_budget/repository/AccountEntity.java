@@ -26,6 +26,7 @@ public class AccountEntity {
     private LocalDateTime cratedOn;
     private LocalDateTime updatedOn;
     private Boolean active;
+    private Boolean expense;
 
 
 }

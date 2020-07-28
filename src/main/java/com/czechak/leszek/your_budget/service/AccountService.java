@@ -34,6 +34,7 @@ public class AccountService {
         accountEntity.setCratedOn(LocalDateTime.now());
         accountEntity.setUpdatedOn(LocalDateTime.now());
         accountEntity.setActive(true);
+        accountEntity.setExpense(false);
         repository.save(accountEntity);
     }
 
@@ -47,6 +48,7 @@ public class AccountService {
         getAccountsResponse.setUserAccounts(accountEntitiesByUserEntity
                 .stream()
                 .filter(AccountEntity::getActive)
+                .filter(x -> !x.getExpense())
                 .map(x -> {
                     Account account = new Account();
                     account.setAccountId(x.getAccountId());

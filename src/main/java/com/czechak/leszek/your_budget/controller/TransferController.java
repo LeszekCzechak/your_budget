@@ -1,7 +1,7 @@
 package com.czechak.leszek.your_budget.controller;
 
 import com.czechak.leszek.your_budget.dto.PaymentOnAccountRequest;
-import com.czechak.leszek.your_budget.dto.SpendOnPurpose;
+import com.czechak.leszek.your_budget.dto.SpendOnPurposeRequest;
 import com.czechak.leszek.your_budget.dto.TransferFromAccountRequest;
 import com.czechak.leszek.your_budget.service.TransferService;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +31,7 @@ public class TransferController {
     }
 
     @PostMapping("/transferToExpense")
-    public ResponseEntity<Void> spendOnPurpose (@RequestBody SpendOnPurpose spendOnPurpose){
+    public ResponseEntity<Void> spendOnPurpose (@RequestBody SpendOnPurposeRequest spendOnPurposeRequest){
         // TODO uzupełnić ciało metody
         return ResponseEntity.ok(null);
     }
