@@ -14,5 +14,7 @@ import javax.persistence.Table;
 @Entity
 public class ExpensePurposeEntity extends AccountEntity {
 
+    private Boolean isExpensePurposeEntity = true;
+
 
 }

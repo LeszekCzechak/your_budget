@@ -8,10 +8,9 @@ metoda ta tworzy obiekt/edytuje obiekt UserEntity  i zapisuje go do bazy danych
 
 usunięcie subkont- transer na konto główne?
 
-wydanie środków na jakiś cel
+pokazanie wszystkich expensePurposeEntity
 
-adnotacja na co poszedł wydatek ? czy lepiej konto wydatkowe
-adnotacje do przelewu (opis)
+
 description- klucz obcy (id)
 nazwy kolumn w bazie danych zapisać
 środowisko testujące

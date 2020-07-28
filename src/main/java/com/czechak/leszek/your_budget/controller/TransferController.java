@@ -32,7 +32,7 @@ public class TransferController {
 
     @PostMapping("/transferToExpense")
     public ResponseEntity<Void> spendOnPurpose (@RequestBody SpendOnPurposeRequest spendOnPurposeRequest){
-        // TODO uzupełnić ciało metody
+       transferService.SpendOnPurpose(spendOnPurposeRequest);
         return ResponseEntity.ok(null);
     }
 

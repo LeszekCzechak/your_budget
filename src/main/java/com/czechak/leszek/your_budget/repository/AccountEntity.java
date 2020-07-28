@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Data
 @Table(name = "accounts")
@@ -28,5 +29,23 @@ public class AccountEntity {
     private Boolean active;
     private Boolean expense;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AccountEntity that = (AccountEntity) o;
+        return Objects.equals(accountId, that.accountId) &&
+                Objects.equals(userEntity, that.userEntity) &&
+                Objects.equals(description, that.description) &&
+                Objects.equals(amount, that.amount) &&
+                Objects.equals(cratedOn, that.cratedOn) &&
+                Objects.equals(updatedOn, that.updatedOn) &&
+                Objects.equals(active, that.active) &&
+                Objects.equals(expense, that.expense);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(accountId, userEntity, description, amount, cratedOn, updatedOn, active, expense);
+    }
 }
