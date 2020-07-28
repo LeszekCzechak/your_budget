@@ -2,7 +2,7 @@ package com.czechak.leszek.your_budget.service;
 
 import com.czechak.leszek.your_budget.dto.CreatePurposeRequest;
 import com.czechak.leszek.your_budget.model.account.AccountRepository;
-import com.czechak.leszek.your_budget.repository.ExpensePurposeEntity;
+import com.czechak.leszek.your_budget.repository.PurposeEntity;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -18,18 +18,18 @@ public class PurposeService {
     }
 
     public void createPurpose(CreatePurposeRequest createPurposeRequest) {
-        ExpensePurposeEntity expensePurposeEntity = new ExpensePurposeEntity();
+        PurposeEntity purposeEntity = new PurposeEntity();
 
-        expensePurposeEntity.setDescription(createPurposeRequest.getDescription());
-        expensePurposeEntity.setAmount(BigDecimal.ZERO);
-        expensePurposeEntity.setActive(true);
-        expensePurposeEntity.setExpense(true);
-        expensePurposeEntity.setIsExpensePurposeEntity(true);
-        expensePurposeEntity.setCratedOn(LocalDateTime.now());
-        expensePurposeEntity.setUpdatedOn(LocalDateTime.now());
+        purposeEntity.setDescription(createPurposeRequest.getDescription());
+        purposeEntity.setAmount(BigDecimal.ZERO);
+        purposeEntity.setActive(true);
+        purposeEntity.setExpense(true);
+        purposeEntity.setIsExpensePurposeEntity(true);
+        purposeEntity.setCratedOn(LocalDateTime.now());
+        purposeEntity.setUpdatedOn(LocalDateTime.now());
         //TODO: Czy faktycznie uzupełniać poniższe?
-        expensePurposeEntity.setUserEntity(userContext.getCurrentUser());
-        accountRepository.save(expensePurposeEntity);
+        purposeEntity.setUserEntity(userContext.getCurrentUser());
+        accountRepository.save(purposeEntity);
     }
 
 }

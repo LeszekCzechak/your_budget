@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class ExpensePurposeEntity extends AccountEntity {
+public class PurposeEntity extends AccountEntity {
 
     private Boolean isExpensePurposeEntity = true;
 
