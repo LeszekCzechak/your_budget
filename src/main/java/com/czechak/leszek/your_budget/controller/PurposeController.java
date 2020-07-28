@@ -14,10 +14,14 @@ public class PurposeController {
     TransferService transferService;
     PurposeService purposeService;
 
+    public PurposeController(TransferService transferService, PurposeService purposeService) {
+        this.transferService = transferService;
+        this.purposeService = purposeService;
+    }
 
     @PostMapping("/purpose")
     public ResponseEntity<Void> createPurpose(@RequestBody CreatePurposeRequest newPurpose) {
-        //TODO uzupełnić ciało metody
+        purposeService.createPurpose(newPurpose);
         return ResponseEntity.ok(null);
     }
 

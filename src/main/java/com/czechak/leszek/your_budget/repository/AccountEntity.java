@@ -3,6 +3,7 @@ package com.czechak.leszek.your_budget.repository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -14,6 +15,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class AccountEntity {
 
     @Id
@@ -22,6 +24,7 @@ public class AccountEntity {
 
     @ManyToOne
     private UserEntity userEntity;
+    @NaturalId
     private String description;
     private BigDecimal amount;
     private LocalDateTime cratedOn;

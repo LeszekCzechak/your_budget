@@ -3,10 +3,12 @@ package com.czechak.leszek.your_budget.service;
 import com.czechak.leszek.your_budget.dto.CreatePurposeRequest;
 import com.czechak.leszek.your_budget.model.account.AccountRepository;
 import com.czechak.leszek.your_budget.repository.PurposeEntity;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+@Service
 public class PurposeService {
 
     AccountRepository accountRepository;
