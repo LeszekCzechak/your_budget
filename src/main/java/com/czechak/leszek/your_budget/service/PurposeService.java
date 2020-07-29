@@ -5,6 +5,7 @@ import com.czechak.leszek.your_budget.dto.purpose.EditPurposeRequest;
 import com.czechak.leszek.your_budget.dto.purpose.GetPurposesResponse;
 import com.czechak.leszek.your_budget.dto.purpose.Purpose;
 import com.czechak.leszek.your_budget.model.account.AccountRepository;
+import com.czechak.leszek.your_budget.model.purpose.PurposeRepository;
 import com.czechak.leszek.your_budget.repository.AccountEntity;
 import com.czechak.leszek.your_budget.repository.PurposeEntity;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
 public class PurposeService {
 
     AccountRepository repository;
+    PurposeRepository purposeRepository;
     UserContext userContext;
 
     public PurposeService(AccountRepository repository, UserContext userContext) {
@@ -42,7 +44,7 @@ public class PurposeService {
 
     public GetPurposesResponse getAllUserPurposes() {
 
-        List<PurposeEntity> purposeEntityList = repository.findPurposesByUser(userContext.getCurrentUser().getUserId());
+        List<PurposeEntity> purposeEntityList = purposeRepository.findPurposesByUser(userContext.getCurrentUser().getUserId());
 
 //        List<AccountEntity> accountEntitiesByUserEntity = repository.findAccountEntitiesByUserEntity(userContext.getCurrentUser());
         GetPurposesResponse getPurposesResponse = new GetPurposesResponse();
@@ -70,7 +72,7 @@ public class PurposeService {
 
     public void editPurpose(EditPurposeRequest purposeRequest) {
 
-        PurposeEntity purposeEntity = repository.findPurposeById(purposeRequest.getAccountId());
+        PurposeEntity purposeEntity = purposeRepository.findPurposeById(purposeRequest.getAccountId());
 //
 //        Optional<AccountEntity> optionalAccountEntity = repository.findById(purposeRequest.getAccountId());
 //        AccountEntity accountEntity = optionalAccountEntity.get();

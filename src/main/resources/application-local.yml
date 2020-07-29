@@ -4,7 +4,7 @@ spring:
     path: '/console'
 
   datasource:
-    url: 'jdbc:h2:file:C:\Users\lesze\IdeaProjects\your_budget\my-budget-db'
+    url: 'jdbc:h2:file:./my-budget-db'
 
   jpa:
     hibernate:
