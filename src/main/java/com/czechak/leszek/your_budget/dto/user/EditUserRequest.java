@@ -1,4 +1,4 @@
-package com.czechak.leszek.your_budget.dto;
+package com.czechak.leszek.your_budget.dto.user;
 
 import lombok.Data;
 

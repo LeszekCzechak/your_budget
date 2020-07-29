@@ -8,13 +8,12 @@ metoda ta tworzy obiekt/edytuje obiekt UserEntity  i zapisuje go do bazy danych
 
 usunięcie subkont- transer na konto główne?
 
-pokazanie wszystkich purposeEntity
-
 
 description- klucz obcy (id)
 nazwy kolumn w bazie danych zapisać
 środowisko testujące
 initSQL
+
 
 Usunięcie konta,
 Usunięcie wydatku

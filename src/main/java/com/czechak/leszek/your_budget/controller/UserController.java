@@ -1,7 +1,7 @@
 package com.czechak.leszek.your_budget.controller;
 
-import com.czechak.leszek.your_budget.dto.CreateUserRequest;
-import com.czechak.leszek.your_budget.dto.EditUserRequest;
+import com.czechak.leszek.your_budget.dto.user.CreateUserRequest;
+import com.czechak.leszek.your_budget.dto.user.EditUserRequest;
 import com.czechak.leszek.your_budget.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

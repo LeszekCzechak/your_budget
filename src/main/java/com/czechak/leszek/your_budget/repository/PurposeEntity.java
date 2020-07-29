@@ -16,5 +16,4 @@ public class PurposeEntity extends AccountEntity {
 
     private Boolean isExpensePurposeEntity = true;
 
-
 }

@@ -1,8 +1,9 @@
 package com.czechak.leszek.your_budget.service;
 
-import com.czechak.leszek.your_budget.dto.CreatePurposeRequest;
-import com.czechak.leszek.your_budget.dto.GetPurposeResponse;
-import com.czechak.leszek.your_budget.dto.Purpose;
+import com.czechak.leszek.your_budget.dto.purpose.CreatePurposeRequest;
+import com.czechak.leszek.your_budget.dto.purpose.EditPurposeRequest;
+import com.czechak.leszek.your_budget.dto.purpose.GetPurposesResponse;
+import com.czechak.leszek.your_budget.dto.purpose.Purpose;
 import com.czechak.leszek.your_budget.model.account.AccountRepository;
 import com.czechak.leszek.your_budget.repository.AccountEntity;
 import com.czechak.leszek.your_budget.repository.PurposeEntity;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -38,14 +40,16 @@ public class PurposeService {
         repository.save(purposeEntity);
     }
 
-    public GetPurposeResponse getAllUserPurposes() {
+    public GetPurposesResponse getAllUserPurposes() {
 
-        List<AccountEntity> accountEntitiesByUserEntity = repository.findAccountEntitiesByUserEntity(userContext.getCurrentUser());
-        GetPurposeResponse getPurposeResponse = new GetPurposeResponse();
+        List<PurposeEntity> purposeEntityList = repository.findPurposesByUser(userContext.getCurrentUser().getUserId());
+
+//        List<AccountEntity> accountEntitiesByUserEntity = repository.findAccountEntitiesByUserEntity(userContext.getCurrentUser());
+        GetPurposesResponse getPurposesResponse = new GetPurposesResponse();
 
 
-        getPurposeResponse.setUserPurpose(
-                accountEntitiesByUserEntity.stream()
+        getPurposesResponse.setUserPurpose(
+               purposeEntityList.stream()
                         .filter(AccountEntity::getExpense)
                         .filter(AccountEntity::getActive)
                         .map(x -> {
@@ -60,7 +64,28 @@ public class PurposeService {
                         })
                         .collect(Collectors.toList())
         );
-        return getPurposeResponse;
+        return getPurposesResponse;
+    }
+
+
+    public void editPurpose(EditPurposeRequest purposeRequest) {
+
+        PurposeEntity purposeEntity = repository.findPurposeById(purposeRequest.getAccountId());
+//
+//        Optional<AccountEntity> optionalAccountEntity = repository.findById(purposeRequest.getAccountId());
+//        AccountEntity accountEntity = optionalAccountEntity.get();
+
+//        PurposeEntity purposeEntity= new PurposeEntity();
+        purposeEntity.setAccountId(purposeRequest.getAccountId());
+        purposeEntity.setActive(purposeRequest.getActive());
+        purposeEntity.setDescription(purposeRequest.getDescription());
+        purposeEntity.setAmount(purposeEntity.getAmount());
+        purposeEntity.setCratedOn(purposeEntity.getCratedOn());
+        purposeEntity.setExpense(true);
+        purposeEntity.setUpdatedOn(LocalDateTime.now());
+        purposeEntity.setUserEntity(userContext.getCurrentUser());
+        repository.save(purposeEntity);
+
     }
 
 }

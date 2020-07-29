@@ -9,8 +9,6 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
-import java.util.List;
-
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -30,5 +28,6 @@ public class UserEntity {
     private String mail;
     private String userName;
     private LocalDateTime createUserDate;
+    private LocalDateTime updatedOn;
 
 }

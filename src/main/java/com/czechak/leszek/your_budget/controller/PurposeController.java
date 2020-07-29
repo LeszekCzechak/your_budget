@@ -1,14 +1,12 @@
 package com.czechak.leszek.your_budget.controller;
 
-import com.czechak.leszek.your_budget.dto.CreatePurposeRequest;
-import com.czechak.leszek.your_budget.dto.GetPurposeResponse;
+import com.czechak.leszek.your_budget.dto.purpose.CreatePurposeRequest;
+import com.czechak.leszek.your_budget.dto.purpose.EditPurposeRequest;
+import com.czechak.leszek.your_budget.dto.purpose.GetPurposesResponse;
 import com.czechak.leszek.your_budget.service.PurposeService;
 import com.czechak.leszek.your_budget.service.TransferService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class PurposeController {
@@ -28,8 +26,14 @@ public class PurposeController {
     }
 
     @GetMapping("/purpose")
-    public ResponseEntity<GetPurposeResponse> getAllUserPurposes() {
-        GetPurposeResponse allUserPurposes = purposeService.getAllUserPurposes();
+    public ResponseEntity<GetPurposesResponse> getAllUserPurposes() {
+        GetPurposesResponse allUserPurposes = purposeService.getAllUserPurposes();
         return ResponseEntity.ok(allUserPurposes);
+    }
+
+    @PutMapping("/purpose")
+    public ResponseEntity<Void> editPurpose (@RequestBody EditPurposeRequest editPurposeRequest){
+       purposeService.editPurpose(editPurposeRequest);
+        return ResponseEntity.of(null);
     }
 }

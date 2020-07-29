@@ -1,4 +1,4 @@
-package com.czechak.leszek.your_budget.dto;
+package com.czechak.leszek.your_budget.dto.purpose;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

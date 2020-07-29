@@ -1,8 +1,8 @@
 package com.czechak.leszek.your_budget.controller;
 
 
-import com.czechak.leszek.your_budget.dto.CreateAccountRequest;
-import com.czechak.leszek.your_budget.dto.GetAccountsResponse;
+import com.czechak.leszek.your_budget.dto.account.CreateAccountRequest;
+import com.czechak.leszek.your_budget.dto.account.GetAccountsResponse;
 import com.czechak.leszek.your_budget.service.AccountService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,5 +29,7 @@ public class AccountController {
     public ResponseEntity<GetAccountsResponse> getAccounts() {
         return ResponseEntity.ok(accountService.getAllUserAccounts());
     }
+
+
 
 }

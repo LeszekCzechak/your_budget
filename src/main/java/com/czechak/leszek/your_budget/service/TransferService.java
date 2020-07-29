@@ -1,8 +1,8 @@
 package com.czechak.leszek.your_budget.service;
 
-import com.czechak.leszek.your_budget.dto.PaymentOnAccountRequest;
-import com.czechak.leszek.your_budget.dto.SpendOnPurposeRequest;
-import com.czechak.leszek.your_budget.dto.TransferFromAccountRequest;
+import com.czechak.leszek.your_budget.dto.account.PaymentOnAccountRequest;
+import com.czechak.leszek.your_budget.dto.purpose.SpendOnPurposeRequest;
+import com.czechak.leszek.your_budget.dto.account.TransferFromAccountRequest;
 import com.czechak.leszek.your_budget.model.account.AccountRepository;
 import com.czechak.leszek.your_budget.model.transfer.TransferRepository;
 import com.czechak.leszek.your_budget.model.user.UserRepository;

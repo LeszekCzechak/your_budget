@@ -1,16 +1,16 @@
-package com.czechak.leszek.your_budget.dto;
+package com.czechak.leszek.your_budget.dto.purpose;
 
 import lombok.Data;
 
 import java.math.BigDecimal;
 
 @Data
-public class TransferFromAccountRequest {
+public class SpendOnPurposeRequest {
 
-    private Long userId;
-    private Long selectedAccountId;
+    private Long sourceAccountId;
     private Long targetAccountId;
     private BigDecimal amount;
     private String description;
+
 
 }

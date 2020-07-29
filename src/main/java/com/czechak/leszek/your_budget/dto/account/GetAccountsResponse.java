@@ -1,6 +1,6 @@
-package com.czechak.leszek.your_budget.dto;
+package com.czechak.leszek.your_budget.dto.account;
 
-import com.czechak.leszek.your_budget.repository.AccountEntity;
+import com.czechak.leszek.your_budget.dto.account.Account;
 import lombok.Data;
 
 import java.util.List;
