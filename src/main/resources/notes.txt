@@ -15,7 +15,5 @@ nazwy kolumn w bazie danych zapisać
 initSQL
 
 
-Usunięcie konta,
-Usunięcie wydatku
 Edycja konta
 Edycja wydatku
