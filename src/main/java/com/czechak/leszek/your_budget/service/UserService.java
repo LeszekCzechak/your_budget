@@ -41,6 +41,22 @@ public class UserService {
         repository.save(userEntity);
     }
 
+    public GetUserResponse getCurrentUser(){
+        UserEntity currentUser = userContext.getCurrentUser();
+
+        GetUserResponse getUserResponse= new GetUserResponse();
+
+        getUserResponse.setLogin(currentUser.getLogin());
+//        getUserResponse.setPassword(currentUser.getPassword());
+        getUserResponse.setCreateUserDate(currentUser.getCreateUserDate());
+        getUserResponse.setUpdatedOn(currentUser.getUpdatedOn());
+        getUserResponse.setMail(currentUser.getMail());
+        getUserResponse.setUserName(currentUser.getUserName());
+
+        return getUserResponse;
+
+    }
+
     public GetUserResponse getUserResponseByUserId (Long userId){
 
         Optional<UserEntity> optionalUserEntity = repository.findById(userId);

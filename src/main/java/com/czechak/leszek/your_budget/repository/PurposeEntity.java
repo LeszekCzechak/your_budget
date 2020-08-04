@@ -9,11 +9,9 @@ import javax.persistence.Table;
 
 @Data
 @Table(name = "accounts")
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 public class PurposeEntity extends AccountEntity {
 
-    private Boolean isExpensePurposeEntity = true;
 
 }

@@ -7,6 +7,7 @@ import com.czechak.leszek.your_budget.model.account.AccountRepository;
 import com.czechak.leszek.your_budget.model.transfer.TransferRepository;
 import com.czechak.leszek.your_budget.model.user.UserRepository;
 import com.czechak.leszek.your_budget.repository.AccountEntity;
+import com.czechak.leszek.your_budget.repository.PurposeEntity;
 import com.czechak.leszek.your_budget.repository.TransferEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,6 +41,10 @@ public class TransferService {
 
         Optional<AccountEntity> targetAccountOptional = accountRepository.findById(transferRequest.getTargetAccountId());
         AccountEntity targetAccount = targetAccountOptional.get();
+
+        if(targetAccount instanceof PurposeEntity){
+            System.out.println("tak, jest! purpose ");
+        }
 
         boolean sameUser = targetAccount.getUserEntity().equals(sourceAccount.getUserEntity());
 

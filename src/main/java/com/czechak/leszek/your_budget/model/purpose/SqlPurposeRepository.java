@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface SqlPurposeRepository extends PurposeRepository, JpaRepository<PurposeEntity, Long> {
 
-    @Query("select purpose from PurposeEntity purpose where purpose.isExpensePurposeEntity = true and purpose.userEntity.userId = :userId" )
+    @Query("select purpose from PurposeEntity purpose where purpose.userEntity.userId = :userId" )
     List<PurposeEntity> findPurposesByUser(@Param("userId") Long userId);
 
     @Query("select purpose from PurposeEntity purpose where purpose.accountId = :accountId" )

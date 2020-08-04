@@ -24,6 +24,4 @@ public class TransferEntity {
     private LocalDateTime transferData;
     private String description;
 
-
-
 }

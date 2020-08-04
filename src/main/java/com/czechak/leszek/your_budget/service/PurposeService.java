@@ -19,13 +19,14 @@ import java.util.stream.Collectors;
 @Service
 public class PurposeService {
 
-    AccountRepository repository;
-    PurposeRepository purposeRepository;
-    UserContext userContext;
+    private final AccountRepository repository;
+    private final PurposeRepository purposeRepository;
+    private final UserContext userContext;
 
-    public PurposeService(AccountRepository repository, UserContext userContext) {
+    public PurposeService(AccountRepository repository, PurposeRepository purposeRepository, UserContext userContext) {
         this.repository = repository;
         this.userContext = userContext;
+        this.purposeRepository = purposeRepository;
     }
 
     public void createPurpose(CreatePurposeRequest createPurposeRequest) {
@@ -35,7 +36,6 @@ public class PurposeService {
         purposeEntity.setAmount(BigDecimal.ZERO);
         purposeEntity.setActive(true);
         purposeEntity.setExpense(true);
-        purposeEntity.setIsExpensePurposeEntity(true);
         purposeEntity.setCratedOn(LocalDateTime.now());
         purposeEntity.setUpdatedOn(LocalDateTime.now());
         purposeEntity.setUserEntity(userContext.getCurrentUser());
@@ -46,13 +46,11 @@ public class PurposeService {
 
         List<PurposeEntity> purposeEntityList = purposeRepository.findPurposesByUser(userContext.getCurrentUser().getUserId());
 
-//        List<AccountEntity> accountEntitiesByUserEntity = repository.findAccountEntitiesByUserEntity(userContext.getCurrentUser());
         GetPurposesResponse getPurposesResponse = new GetPurposesResponse();
 
 
         getPurposesResponse.setUserPurpose(
                purposeEntityList.stream()
-                        .filter(AccountEntity::getExpense)
                         .filter(AccountEntity::getActive)
                         .map(x -> {
                             Purpose purpose = new Purpose();

@@ -8,11 +8,26 @@ metoda ta tworzy obiekt/edytuje obiekt UserEntity  i zapisuje go do bazy danych
 
 usunięcie subkont- transer na konto główne?
 
+dodać typ wydatku dla purpose
 
-description- klucz obcy (id)
-nazwy kolumn w bazie danych zapisać
-środowisko testujące
-initSQL
+
+description- klucz obcy do transferu (id)- stworzenie oddzielnej tabelki na opis transferu
+nazwy kolumn w bazie danych zapisać @Colum(name- "fasda")
+
+środowisko testujące-
+
+initSQL- to ogarnąć w najbliższym czasie
+
+
+1. ograniczyć możliwość transferów z purpose
+2. skonstruowac hierarchię wyjątków
+3. ograniczyć doładowanie purpose
+4(10). description- klucz obcy do transferu (id)
+5. utworzyć typy wydatków, zawiera typ(opis) i użytkownika
+6(20). internacjonalizacja
+7. basic security
+8. dodac tabele, id user oraz role
+
 
 
 Edycja konta

@@ -15,7 +15,7 @@ spring:
       name: admin
       password: admin
 
-server:
-  port: 8180
-  servlet:
-    context-path: /mybudget
+#server:
+#  port: 8180
+#  servlet:
+#    context-path: /mybudget
