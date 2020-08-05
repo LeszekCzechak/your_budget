@@ -23,7 +23,7 @@ public class CategoryService {
 
     public void createCategory(CreateCategoryRequest newCategory) {
 
-        CategoryEntity categoryEntity= new CategoryEntity();
+        CategoryEntity categoryEntity = new CategoryEntity();
 
         categoryEntity.setName(newCategory.getName());
         categoryEntity.setDescription(newCategory.getDescription());
@@ -34,7 +34,7 @@ public class CategoryService {
 
     public GetCategoryResponse getCategories() {
 
-        List<CategoryEntity> categoryEntitiesByUserId=categoryRepository.findCategoryByUser(userContext.getCurrentUser().getUserId());
+        List<CategoryEntity> categoryEntitiesByUserId = categoryRepository.findCategoryByUser(userContext.getCurrentUser().getUserId());
 
         List<CategoryResponse> categoryResponses = categoryEntitiesByUserId
                 .stream()
@@ -47,7 +47,7 @@ public class CategoryService {
                 })
                 .collect(Collectors.toList());
 
-        GetCategoryResponse getCategoryResponse= new GetCategoryResponse();
+        GetCategoryResponse getCategoryResponse = new GetCategoryResponse();
         getCategoryResponse.setCategories(categoryResponses);
 
         return getCategoryResponse;
@@ -56,5 +56,16 @@ public class CategoryService {
     public CategoryEntity getCategory(Long categoryId) {
         CategoryEntity categoryEntity = categoryRepository.findCategoryByCategoryId(categoryId);
         return categoryEntity;
+    }
+
+    public CategoryResponse getCategoryResponseById(Long categoryId) {
+        CategoryEntity categoryEntity = categoryRepository.findCategoryByCategoryId(categoryId);
+
+        CategoryResponse categoryResponse = new CategoryResponse();
+        categoryResponse.setCategoryId(categoryEntity.getCategoryId());
+        categoryResponse.setName(categoryEntity.getName());
+        categoryResponse.setDescription(categoryEntity.getDescription());
+
+        return categoryResponse;
     }
 }

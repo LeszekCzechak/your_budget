@@ -33,7 +33,7 @@ public class TransferService {
     }
 
 
-    @Transactional // jeżeli któraś z komend się wysypie to wycofa wszystie działania
+    @Transactional
     public void transferFromAccount(TransferFromAccountRequest transferRequest) {
 
 
@@ -44,11 +44,7 @@ public class TransferService {
         AccountEntity targetAccount = targetAccountOptional.get();
 
         if(sourceAccount instanceof PurposeEntity){
-            try {
                 throw new PurposeException("Can't transfer from that account");
-            } catch (PurposeException e) {
-                e.printStackTrace();
-            }
         }
 
         boolean sameUser = targetAccount.getUserEntity().equals(sourceAccount.getUserEntity());

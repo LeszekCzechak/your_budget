@@ -24,12 +24,14 @@ public class PurposeService {
     private final PurposeRepository purposeRepository;
     private final CategoryRepository categoryRepository;
     private final UserContext userContext;
+    private final CategoryService categoryService;
 
-    public PurposeService(AccountRepository accountRepository, PurposeRepository purposeRepository, CategoryRepository categoryRepository, UserContext userContext) {
+    public PurposeService(AccountRepository accountRepository, PurposeRepository purposeRepository, CategoryRepository categoryRepository, UserContext userContext, CategoryService categoryService) {
         this.accountRepository = accountRepository;
         this.purposeRepository = purposeRepository;
         this.categoryRepository = categoryRepository;
         this.userContext = userContext;
+        this.categoryService = categoryService;
     }
 
     public void createPurpose(CreatePurposeRequest createPurposeRequest) {
@@ -71,6 +73,7 @@ public class PurposeService {
                             purpose.setDescription((x.getDescription()));
                             purpose.setUpdatedOn(x.getUpdatedOn());
                             purpose.setUserId(x.getUserEntity().getUserId());
+                            purpose.setCategoryResponse(categoryService.getCategoryResponseById(x.getCategory().getCategoryId()));
                             return purpose;
                         })
                         .collect(Collectors.toList())
@@ -91,6 +94,7 @@ public class PurposeService {
         purposeEntity.setExpense(true);
         purposeEntity.setUpdatedOn(LocalDateTime.now());
         purposeEntity.setUserEntity(userContext.getCurrentUser());
+        purposeEntity.setCategory(categoryService.getCategory(purposeRequest.getCategoryId()));
         accountRepository.save(purposeEntity);
 
     }
