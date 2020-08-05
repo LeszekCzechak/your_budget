@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface SqlCategoryRepository extends CategoryRepository, JpaRepository<CategoryEntity, Long> {
 
-    @Query("select category from CategoryEntity category where categogy.userId = :userId" )
+    @Query("select category from CategoryEntity category where category.userId = :userId" )
     List<CategoryEntity> findCategoryByUser(@Param("userId") Long userId);
 
-    CategoryEntity findCategoryById(Long categoryId);
+    CategoryEntity findCategoryByCategoryId(Long categoryId);
 
 }

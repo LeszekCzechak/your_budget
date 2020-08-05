@@ -11,5 +11,5 @@ public interface CategoryRepository {
 
     CategoryEntity save(CategoryEntity categoryEntity);
 
-    CategoryEntity findCategoryById(Long categoryId);
+    CategoryEntity findCategoryByCategoryId(Long categoryId);
 }
