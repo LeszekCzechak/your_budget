@@ -42,8 +42,9 @@ public class TransferService {
         Optional<AccountEntity> targetAccountOptional = accountRepository.findById(transferRequest.getTargetAccountId());
         AccountEntity targetAccount = targetAccountOptional.get();
 
-        if(targetAccount instanceof PurposeEntity){
-            System.out.println("tak, jest! purpose ");
+        if(sourceAccount instanceof PurposeEntity){
+            System.out.println("Próbujesz przelać kase z Purpose, blokuję!");
+            return;
         }
 
         boolean sameUser = targetAccount.getUserEntity().equals(sourceAccount.getUserEntity());

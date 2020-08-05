@@ -27,6 +27,8 @@ initSQL- to ogarnąć w najbliższym czasie
 6(20). internacjonalizacja
 7. basic security
 8. dodac tabele, id user oraz role
+9. suma hajsu na wszystkich kontach
+
 
 
 

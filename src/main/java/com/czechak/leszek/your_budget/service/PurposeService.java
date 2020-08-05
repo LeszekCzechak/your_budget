@@ -5,31 +5,41 @@ import com.czechak.leszek.your_budget.dto.purpose.EditPurposeRequest;
 import com.czechak.leszek.your_budget.dto.purpose.GetPurposesResponse;
 import com.czechak.leszek.your_budget.dto.purpose.Purpose;
 import com.czechak.leszek.your_budget.model.account.AccountRepository;
+import com.czechak.leszek.your_budget.model.category.CategoryRepository;
 import com.czechak.leszek.your_budget.model.purpose.PurposeRepository;
 import com.czechak.leszek.your_budget.repository.AccountEntity;
+import com.czechak.leszek.your_budget.repository.CategoryEntity;
 import com.czechak.leszek.your_budget.repository.PurposeEntity;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class PurposeService {
 
-    private final AccountRepository repository;
+    private final AccountRepository accountRepository;
     private final PurposeRepository purposeRepository;
+    private final CategoryRepository categoryRepository;
     private final UserContext userContext;
 
-    public PurposeService(AccountRepository repository, PurposeRepository purposeRepository, UserContext userContext) {
-        this.repository = repository;
-        this.userContext = userContext;
+    public PurposeService(AccountRepository accountRepository, PurposeRepository purposeRepository, CategoryRepository categoryRepository, UserContext userContext) {
+        this.accountRepository = accountRepository;
         this.purposeRepository = purposeRepository;
+        this.categoryRepository = categoryRepository;
+        this.userContext = userContext;
     }
 
     public void createPurpose(CreatePurposeRequest createPurposeRequest) {
+
+        CategoryEntity category = categoryRepository.findCategoryById(createPurposeRequest.getCategoryId());
+        if(category == null){
+            //todo dodać defaultową ketegorię i tu ją przypisać.
+        }
+
+
         PurposeEntity purposeEntity = new PurposeEntity();
 
         purposeEntity.setDescription(createPurposeRequest.getDescription());
@@ -39,7 +49,8 @@ public class PurposeService {
         purposeEntity.setCratedOn(LocalDateTime.now());
         purposeEntity.setUpdatedOn(LocalDateTime.now());
         purposeEntity.setUserEntity(userContext.getCurrentUser());
-        repository.save(purposeEntity);
+        purposeEntity.setCategory(category);
+        accountRepository.save(purposeEntity);
     }
 
     public GetPurposesResponse getAllUserPurposes() {
@@ -71,11 +82,7 @@ public class PurposeService {
     public void editPurpose(EditPurposeRequest purposeRequest) {
 
         PurposeEntity purposeEntity = purposeRepository.findPurposeById(purposeRequest.getAccountId());
-//
-//        Optional<AccountEntity> optionalAccountEntity = repository.findById(purposeRequest.getAccountId());
-//        AccountEntity accountEntity = optionalAccountEntity.get();
 
-//        PurposeEntity purposeEntity= new PurposeEntity();
         purposeEntity.setAccountId(purposeRequest.getAccountId());
         purposeEntity.setActive(purposeRequest.getActive());
         purposeEntity.setDescription(purposeRequest.getDescription());
@@ -84,7 +91,7 @@ public class PurposeService {
         purposeEntity.setExpense(true);
         purposeEntity.setUpdatedOn(LocalDateTime.now());
         purposeEntity.setUserEntity(userContext.getCurrentUser());
-        repository.save(purposeEntity);
+        accountRepository.save(purposeEntity);
 
     }
 
