@@ -3,6 +3,7 @@ package com.czechak.leszek.your_budget.service;
 import com.czechak.leszek.your_budget.dto.account.PaymentOnAccountRequest;
 import com.czechak.leszek.your_budget.dto.purpose.SpendOnPurposeRequest;
 import com.czechak.leszek.your_budget.dto.account.TransferFromAccountRequest;
+import com.czechak.leszek.your_budget.exception.PurposeException;
 import com.czechak.leszek.your_budget.model.account.AccountRepository;
 import com.czechak.leszek.your_budget.model.transfer.TransferRepository;
 import com.czechak.leszek.your_budget.model.user.UserRepository;
@@ -43,8 +44,11 @@ public class TransferService {
         AccountEntity targetAccount = targetAccountOptional.get();
 
         if(sourceAccount instanceof PurposeEntity){
-            System.out.println("Próbujesz przelać kase z Purpose, blokuję!");
-            return;
+            try {
+                throw new PurposeException("Can't transfer from that account");
+            } catch (PurposeException e) {
+                e.printStackTrace();
+            }
         }
 
         boolean sameUser = targetAccount.getUserEntity().equals(sourceAccount.getUserEntity());

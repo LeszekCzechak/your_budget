@@ -4,6 +4,7 @@ package com.czechak.leszek.your_budget.repository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -21,10 +22,12 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
     @NotBlank(message = "This field must not be empty")
+    @Column(unique = true)
     private String login;
     @NotBlank(message = "This field must not be empty")
     private String password;
     @Email
+    @Column(unique = true)
     private String mail;
     private String userName;
     private LocalDateTime createUserDate;

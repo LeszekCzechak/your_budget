@@ -24,7 +24,7 @@ public class AccountEntity {
 
     @ManyToOne
     private UserEntity userEntity;
-    @NaturalId
+    @Column(unique = true)
     private String description;
     private BigDecimal amount;
     private LocalDateTime cratedOn;
