@@ -18,7 +18,7 @@ nazwy kolumn w bazie danych zapisać @Colum(name- "fasda")
 
 initSQL- to ogarnąć w najbliższym czasie
 
-
+1. zastanowić się czy każdy Purpose musi mieć przypisaną ketegorię- moze nie mieć kategorii?
 1. ograniczyć możliwość transferów z purpose
 2. skonstruowac hierarchię wyjątków
 3. ograniczyć doładowanie purpose
