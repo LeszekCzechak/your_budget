@@ -8,6 +8,7 @@ import com.czechak.leszek.your_budget.service.CategoryService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@RestController
 public class CategoryController {
 
     CategoryService categoryService;
