@@ -34,7 +34,7 @@ public class PurposeService {
 
     public void createPurpose(CreatePurposeRequest createPurposeRequest) {
 
-        CategoryEntity category = categoryRepository.findCategoryById(createPurposeRequest.getCategoryId());
+        CategoryEntity category = categoryRepository.findCategoryByUserId(createPurposeRequest.getCategoryId());
         if(category == null){
             //todo dodać defaultową ketegorię i tu ją przypisać.
         }

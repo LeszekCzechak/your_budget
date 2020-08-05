@@ -5,10 +5,12 @@ import com.czechak.leszek.your_budget.dto.category.CreateCategoryRequest;
 import com.czechak.leszek.your_budget.dto.category.GetCategoryResponse;
 import com.czechak.leszek.your_budget.model.category.CategoryRepository;
 import com.czechak.leszek.your_budget.repository.CategoryEntity;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class CategoryService {
 
     CategoryRepository categoryRepository;
@@ -52,7 +54,7 @@ public class CategoryService {
     }
 
     public CategoryEntity getCategory(Long categoryId) {
-        CategoryEntity categoryEntity = categoryRepository.findCategoryById(categoryId);
+        CategoryEntity categoryEntity = categoryRepository.findCategoryByUserId(categoryId);
         return categoryEntity;
     }
 }
