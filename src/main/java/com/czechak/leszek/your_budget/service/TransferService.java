@@ -151,6 +151,8 @@ public class TransferService {
         transferEntity.setAmount(paymentOnAccount.getAmount());
         transferEntity.setTargetAccount(accountEntity);
         transferEntity.setTransferData(LocalDateTime.now());
+        transferEntity.setUserEntity(userContext.getCurrentUser());
+        transferEntity.setSelectedAccount(accountEntity);
         transferRepository.save(transferEntity);
 
     }
