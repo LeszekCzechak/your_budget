@@ -13,8 +13,8 @@ import java.util.stream.Collectors;
 @Service
 public class CategoryService {
 
-    CategoryRepository categoryRepository;
-    UserContext userContext;
+    private final CategoryRepository categoryRepository;
+    private final UserContext userContext;
 
     public CategoryService(CategoryRepository categoryRepository, UserContext userContext) {
         this.categoryRepository = categoryRepository;

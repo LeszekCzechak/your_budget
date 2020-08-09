@@ -20,10 +20,10 @@ import java.util.Optional;
 @Service
 public class TransferService {
 
-    TransferRepository transferRepository;
-    UserContext userContext;
-    AccountRepository accountRepository;
-    UserRepository userRepository;
+    private final TransferRepository transferRepository;
+    private final UserContext userContext;
+    private final AccountRepository accountRepository;
+    private final UserRepository userRepository;
 
     public TransferService(TransferRepository transferRepository, UserContext userContext, AccountRepository accountRepository, UserRepository userRepository) {
         this.transferRepository = transferRepository;
@@ -137,6 +137,10 @@ public class TransferService {
 
         Optional<AccountEntity> accountEntityOptional = accountRepository.findById(paymentOnAccount.getTargetAccountId());
         AccountEntity accountEntity = accountEntityOptional.get();
+
+        if(accountEntity instanceof PurposeEntity){
+            throw new PurposeException("You can't transfer to that account");
+        }
 
         accountEntity.setAmount(accountEntity.getAmount().add(paymentOnAccount.getAmount()));
         accountEntity.setUpdatedOn(LocalDateTime.now());

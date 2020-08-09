@@ -11,7 +11,7 @@ import java.util.Optional;
 public class UserContext {
 
 
-    UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Autowired
     public UserContext(UserRepository userRepository) {

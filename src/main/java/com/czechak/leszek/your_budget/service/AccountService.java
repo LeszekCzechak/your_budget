@@ -16,8 +16,8 @@ import java.util.stream.Collectors;
 @Service
 public class AccountService {
 
-    AccountRepository repository;
-    UserContext userContext;
+    private final AccountRepository repository;
+    private final UserContext userContext;
 
     public AccountService(AccountRepository repository, UserContext userContext) {
 

@@ -18,18 +18,17 @@ nazwy kolumn w bazie danych zapisać @Colum(name- "fasda")
 
 initSQL- to ogarnąć w najbliższym czasie
 
-1. zastanowić się czy każdy Purpose musi mieć przypisaną ketegorię- moze nie mieć kategorii?
-1. ograniczyć możliwość transferów z purpose
+1. ograniczyć możliwość transferów z purpose -done
 2. skonstruowac hierarchię wyjątków
-3. ograniczyć doładowanie purpose
-4(10). description- klucz obcy do transferu (id)
-5. utworzyć typy wydatków, zawiera typ(opis) i użytkownika
+3. ograniczyć doładowanie purpose - done
+4(10). description- klucz obcy do transferu (id) - mam description jako String w TransferEntity
+        - nie wiem po co mam to zmieniać?
+5. utworzyć typy wydatków, zawiera typ(opis) i użytkownika- done
 6(20). internacjonalizacja
 7. basic security
 8. dodac tabele, id user oraz role
 9. suma hajsu na wszystkich kontach
 10. Co zrobić z Commitem Patryka, którym naprawiał mój kod?
-
 
 
 Edycja konta

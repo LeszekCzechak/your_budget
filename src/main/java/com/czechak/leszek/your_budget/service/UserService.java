@@ -14,8 +14,8 @@ import java.util.Optional;
 @Service
 public class UserService {
 
-    UserRepository repository;
-    UserContext userContext;
+    private final UserRepository repository;
+    private final UserContext userContext;
 
     public UserService(UserRepository repository, UserContext userContext) {
         this.repository = repository;
