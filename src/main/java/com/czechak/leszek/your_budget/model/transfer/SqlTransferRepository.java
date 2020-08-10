@@ -10,8 +10,7 @@ import java.util.List;
 @Repository
 interface SqlTransferRepository extends TransferRepository, JpaRepository<TransferEntity, Long> {
 
-    @Query("SELECT transfer FROM TransferEntity transfer WHERE transfer.selectedAccount = :accountId" +
-            " OR transfer.targetAccount = :accountId" )
+    @Query("SELECT transfer FROM TransferEntity transfer WHERE transfer.selectedAccount = :accountId OR transfer.targetAccount = :accountId")
     List<TransferEntity> getAllTransferByAccountId(Long accountId);
 
 }
