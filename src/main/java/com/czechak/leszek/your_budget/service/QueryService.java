@@ -23,9 +23,9 @@ public class QueryService {
 
 
     @Transactional
-    public AllTransfersByAccountIdResponse getAllTransfersByAccountId(GetAllTransfersByAccountIdRequest request){
+    public AllTransfersByAccountIdResponse getAllTransfersByAccountId(Long accountId){
 
-        List<TransferEntity> allTransfersByAccountId = transferRepository.getAllTransferByAccountId(request.getAccountId());
+        List<TransferEntity> allTransfersByAccountId = transferRepository.getAllTransferByAccountId(accountId);
 
         AllTransfersByAccountIdResponse response= new AllTransfersByAccountIdResponse();
         response.setTransferEntities(allTransfersByAccountId);
