@@ -9,7 +9,7 @@ import java.util.List;
 @Data
 public class AllTransfersByAccountIdResponse {
 
-    List<TransferEntity> transferEntities;
+    List<AllTransfersByAccountId> transferEntities;
 
 
 }
