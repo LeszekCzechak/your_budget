@@ -30,6 +30,7 @@ public class AccountEntity {
     private LocalDateTime updatedOn;
     private Boolean active;
     private Boolean expense;
+//    private Currency currency;
 
     @Override
     public boolean equals(Object o) {
@@ -43,11 +44,12 @@ public class AccountEntity {
                 Objects.equals(cratedOn, that.cratedOn) &&
                 Objects.equals(updatedOn, that.updatedOn) &&
                 Objects.equals(active, that.active) &&
-                Objects.equals(expense, that.expense);
+                Objects.equals(expense, that.expense) &&
+                currency == that.currency;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(accountId, userEntity, description, amount, cratedOn, updatedOn, active, expense);
+        return Objects.hash(accountId, userEntity, description, amount, cratedOn, updatedOn, active, expense, currency);
     }
 }

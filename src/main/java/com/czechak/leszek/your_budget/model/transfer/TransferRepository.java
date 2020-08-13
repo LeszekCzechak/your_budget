@@ -8,7 +8,6 @@ public interface TransferRepository {
 
     TransferEntity save(TransferEntity transferEntity);
 
-    //TODO: sprawdzić co zdziała ta metoda
     List<TransferEntity> getAllTransferByAccountId(Long accountId);
 
 }
