@@ -1,5 +1,6 @@
 package com.czechak.leszek.your_budget.dto.account;
 
+import com.czechak.leszek.your_budget.repository.Currency;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -10,5 +11,6 @@ public class PaymentOnAccountRequest {
     private Long targetAccountId;
     private BigDecimal amount;
     private String description;
+    private Currency currency;
 
 }

@@ -1,5 +1,6 @@
 package com.czechak.leszek.your_budget.dto.account;
 
+import com.czechak.leszek.your_budget.repository.Currency;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,6 +21,7 @@ public class Account {
     private BigDecimal amount;
     private LocalDateTime cratedOn;
     private LocalDateTime updatedOn;
+    private Currency currency;
 
 
 }

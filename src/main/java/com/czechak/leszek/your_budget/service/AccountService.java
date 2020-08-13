@@ -35,6 +35,7 @@ public class AccountService {
         accountEntity.setUpdatedOn(LocalDateTime.now());
         accountEntity.setActive(true);
         accountEntity.setExpense(false);
+        accountEntity.setCurrency(requestAccount.getCurrency());
         repository.save(accountEntity);
     }
 
@@ -57,6 +58,7 @@ public class AccountService {
                     account.setDescription(x.getDescription());
                     account.setUpdatedOn(x.getUpdatedOn());
                     account.setUserId(x.getUserEntity().getUserId());
+                    account.setCurrency(x.getCurrency());
                     return account;
                 })
                 .collect(Collectors.toList()));

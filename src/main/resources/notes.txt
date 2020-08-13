@@ -33,3 +33,7 @@ initSQL- to ogarnąć w najbliższym czasie
 
 Edycja konta
 Edycja wydatku
+
+
+Your API key: ea70119607c64246fa2b4115
+Example request: https://v6.exchangerate-api.com/v6/ea70119607c64246fa2b4115/latest/USD

@@ -30,7 +30,7 @@ public class AccountEntity {
     private LocalDateTime updatedOn;
     private Boolean active;
     private Boolean expense;
-//    private Currency currency;
+    private Currency currency;
 
     @Override
     public boolean equals(Object o) {
