@@ -112,7 +112,7 @@ public class TransferService {
             sourceAccount.setAmount(sourceAccount.getAmount().subtract(spendOnPurposeRequest.getAmount()));
             sourceAccount.setUpdatedOn(LocalDateTime.now());
 
-            targetAccount.setAmount(sourceAccount.getAmount().add(spendOnPurposeRequest.getAmount()));
+            targetAccount.setAmount(targetAccount.getAmount().add(spendOnPurposeRequest.getAmount()));
             targetAccount.setUpdatedOn(LocalDateTime.now());
 
 

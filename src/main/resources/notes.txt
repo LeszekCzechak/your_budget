@@ -29,6 +29,8 @@ initSQL- to ogarnąć w najbliższym czasie
 8. dodac tabele, id user oraz role
 9. suma hajsu na wszystkich kontach
 10. Co zrobić z Commitem Patryka, którym naprawiał mój kod?
+11.podmienić repossitory z model
+12. opcjonalne dodawanie daty dokonania transferu- jeśli brak dto domyślnie now()
 
 
 Edycja konta
