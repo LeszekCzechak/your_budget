@@ -52,6 +52,7 @@ public class PurposeService {
         purposeEntity.setUpdatedOn(LocalDateTime.now());
         purposeEntity.setUserEntity(userContext.getCurrentUser());
         purposeEntity.setCategory(category);
+        purposeEntity.setCurrency(createPurposeRequest.getCurrency());
         accountRepository.save(purposeEntity);
     }
 
@@ -74,6 +75,7 @@ public class PurposeService {
                             purpose.setUpdatedOn(x.getUpdatedOn());
                             purpose.setUserId(x.getUserEntity().getUserId());
                             purpose.setCategoryResponse(categoryService.getCategoryResponseById(x.getCategory().getCategoryId()));
+                            purpose.setCurrency(x.getCurrency());
                             return purpose;
                         })
                         .collect(Collectors.toList())

@@ -1,13 +1,12 @@
 package com.czechak.leszek.your_budget.controller;
 
 import com.czechak.leszek.your_budget.dto.currency.CurrencyResponse;
-import com.czechak.leszek.your_budget.repository.Currency;
 import com.czechak.leszek.your_budget.service.CurrencyService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+//@RestController
 public class CurrencyController {
 
     CurrencyService currencyService;

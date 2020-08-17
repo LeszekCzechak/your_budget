@@ -30,7 +30,7 @@ public class TransferController {
         return ResponseEntity.ok(null);
     }
 
-    @PostMapping("/transferToExpense")
+    @PostMapping("/transferToPurpose")
     public ResponseEntity<Void> spendOnPurpose (@RequestBody SpendOnPurposeRequest spendOnPurposeRequest){
        transferService.SpendOnPurpose(spendOnPurposeRequest);
         return ResponseEntity.ok(null);

@@ -43,8 +43,8 @@ public class TransferService {
         Optional<AccountEntity> targetAccountOptional = accountRepository.findById(transferRequest.getTargetAccountId());
         AccountEntity targetAccount = targetAccountOptional.get();
 
-        if(sourceAccount instanceof PurposeEntity){
-                throw new PurposeException("Can't transfer from that account");
+        if (sourceAccount instanceof PurposeEntity) {
+            throw new PurposeException("Can't transfer from that account");
         }
 
         boolean sameUser = targetAccount.getUserEntity().equals(sourceAccount.getUserEntity());
@@ -56,12 +56,14 @@ public class TransferService {
 
         boolean sourceAccountActive = sourceAccount.getActive();
         boolean targetAccountActive = targetAccount.getActive();
+        boolean sameCurrency = sourceAccount.getCurrency().equals(targetAccount.getCurrency());
 
 
         if (sameUser
                 && enoughCash
                 && sourceAccountActive
-                && targetAccountActive) {
+                && targetAccountActive
+                && sameCurrency) {
 
             TransferEntity transferEntity = new TransferEntity();
 
@@ -96,12 +98,14 @@ public class TransferService {
         boolean targetAccountActive = targetAccount.getActive();
         boolean sourceAccountExpense = sourceAccount.getExpense();
         boolean targetAccountExpense = targetAccount.getExpense();
+        boolean sameCurrency = sourceAccount.getCurrency().equals(targetAccount.getCurrency());
 
         if (enoughCash
                 && sourceAccountActive
                 && targetAccountActive
                 && !sourceAccountExpense
                 && targetAccountExpense
+                && sameCurrency
         ) {
             TransferEntity transferEntity = new TransferEntity();
 
@@ -138,7 +142,7 @@ public class TransferService {
         Optional<AccountEntity> accountEntityOptional = accountRepository.findById(paymentOnAccount.getTargetAccountId());
         AccountEntity accountEntity = accountEntityOptional.get();
 
-        if(accountEntity instanceof PurposeEntity){
+        if (accountEntity instanceof PurposeEntity) {
             throw new PurposeException("You can't transfer to that account");
         }
 

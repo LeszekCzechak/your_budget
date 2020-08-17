@@ -35,6 +35,6 @@ public class PurposeController {
     @PutMapping("/purpose")
     public ResponseEntity<Void> editPurpose (@RequestBody EditPurposeRequest editPurposeRequest){
        purposeService.editPurpose(editPurposeRequest);
-        return ResponseEntity.of(null);
+        return ResponseEntity.ok(null);
     }
 }

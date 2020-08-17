@@ -1,6 +1,7 @@
 package com.czechak.leszek.your_budget.dto.purpose;
 
 import com.czechak.leszek.your_budget.dto.category.CategoryResponse;
+import com.czechak.leszek.your_budget.repository.Currency;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,5 +23,6 @@ public class Purpose {
     private LocalDateTime createdOn;
     private LocalDateTime updatedOn;
     private CategoryResponse categoryResponse;
+    private Currency currency;
 
 }
