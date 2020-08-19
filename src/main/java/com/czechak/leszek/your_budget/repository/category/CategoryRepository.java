@@ -1,6 +1,6 @@
-package com.czechak.leszek.your_budget.model.category;
+package com.czechak.leszek.your_budget.repository.category;
 
-import com.czechak.leszek.your_budget.repository.CategoryEntity;
+import com.czechak.leszek.your_budget.model.CategoryEntity;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;

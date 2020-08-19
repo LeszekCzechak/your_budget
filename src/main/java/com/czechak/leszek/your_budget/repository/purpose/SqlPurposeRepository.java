@@ -1,6 +1,6 @@
-package com.czechak.leszek.your_budget.model.purpose;
+package com.czechak.leszek.your_budget.repository.purpose;
 
-import com.czechak.leszek.your_budget.repository.PurposeEntity;
+import com.czechak.leszek.your_budget.model.PurposeEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

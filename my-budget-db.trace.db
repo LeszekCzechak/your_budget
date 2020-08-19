@@ -419,7 +419,7 @@ SELECT * FROM TRANSFERS transfer WHERE transfer.selectedAccount = ? OR transfer.
 	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:95)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
-	at com.czechak.leszek.your_budget.model.transfer.$Proxy108.getAllTransferByAccountId(Unknown Source)
+	at com.czechak.leszek.your_budget.repository.transfer.$Proxy108.getAllTransferByAccountId(Unknown Source)
 	at com.czechak.leszek.your_budget.service.QueryService.getAllTransfersByAccountId(QueryService.java:28)
 	at com.czechak.leszek.your_budget.service.QueryService$$FastClassBySpringCGLIB$$9f0e22ed.invoke(<generated>)
 	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)

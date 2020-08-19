@@ -3,8 +3,8 @@ package com.czechak.leszek.your_budget.service;
 import com.czechak.leszek.your_budget.dto.account.Account;
 import com.czechak.leszek.your_budget.dto.account.CreateAccountRequest;
 import com.czechak.leszek.your_budget.dto.account.GetAccountsResponse;
-import com.czechak.leszek.your_budget.model.account.AccountRepository;
-import com.czechak.leszek.your_budget.repository.AccountEntity;
+import com.czechak.leszek.your_budget.repository.account.AccountRepository;
+import com.czechak.leszek.your_budget.model.AccountEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

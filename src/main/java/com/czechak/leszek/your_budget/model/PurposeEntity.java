@@ -1,4 +1,4 @@
-package com.czechak.leszek.your_budget.repository;
+package com.czechak.leszek.your_budget.model;
 
 
 import lombok.AllArgsConstructor;

@@ -1,6 +1,6 @@
-package com.czechak.leszek.your_budget.model.user;
+package com.czechak.leszek.your_budget.repository.user;
 
-import com.czechak.leszek.your_budget.repository.UserEntity;
+import com.czechak.leszek.your_budget.model.UserEntity;
 
 import java.util.Optional;
 

@@ -1,6 +1,6 @@
-package com.czechak.leszek.your_budget.model.transfer;
+package com.czechak.leszek.your_budget.repository.transfer;
 
-import com.czechak.leszek.your_budget.repository.TransferEntity;
+import com.czechak.leszek.your_budget.model.TransferEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

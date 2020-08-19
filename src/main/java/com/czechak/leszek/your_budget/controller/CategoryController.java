@@ -3,7 +3,7 @@ package com.czechak.leszek.your_budget.controller;
 import com.czechak.leszek.your_budget.dto.category.CategoryToEdit;
 import com.czechak.leszek.your_budget.dto.category.CreateCategoryRequest;
 import com.czechak.leszek.your_budget.dto.category.GetCategoryResponse;
-import com.czechak.leszek.your_budget.repository.CategoryEntity;
+import com.czechak.leszek.your_budget.model.CategoryEntity;
 import com.czechak.leszek.your_budget.service.CategoryService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

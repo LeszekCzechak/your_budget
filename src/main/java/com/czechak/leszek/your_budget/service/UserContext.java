@@ -1,7 +1,7 @@
 package com.czechak.leszek.your_budget.service;
 
-import com.czechak.leszek.your_budget.model.user.UserRepository;
-import com.czechak.leszek.your_budget.repository.UserEntity;
+import com.czechak.leszek.your_budget.repository.user.UserRepository;
+import com.czechak.leszek.your_budget.model.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

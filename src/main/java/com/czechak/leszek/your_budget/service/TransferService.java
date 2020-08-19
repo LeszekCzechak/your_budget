@@ -4,12 +4,12 @@ import com.czechak.leszek.your_budget.dto.account.PaymentOnAccountRequest;
 import com.czechak.leszek.your_budget.dto.purpose.SpendOnPurposeRequest;
 import com.czechak.leszek.your_budget.dto.account.TransferFromAccountRequest;
 import com.czechak.leszek.your_budget.exception.PurposeException;
-import com.czechak.leszek.your_budget.model.account.AccountRepository;
-import com.czechak.leszek.your_budget.model.transfer.TransferRepository;
-import com.czechak.leszek.your_budget.model.user.UserRepository;
-import com.czechak.leszek.your_budget.repository.AccountEntity;
-import com.czechak.leszek.your_budget.repository.PurposeEntity;
-import com.czechak.leszek.your_budget.repository.TransferEntity;
+import com.czechak.leszek.your_budget.repository.account.AccountRepository;
+import com.czechak.leszek.your_budget.repository.transfer.TransferRepository;
+import com.czechak.leszek.your_budget.repository.user.UserRepository;
+import com.czechak.leszek.your_budget.model.AccountEntity;
+import com.czechak.leszek.your_budget.model.PurposeEntity;
+import com.czechak.leszek.your_budget.model.TransferEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,14 +24,15 @@ public class TransferService {
     private final UserContext userContext;
     private final AccountRepository accountRepository;
     private final UserRepository userRepository;
+    private final CurrencyExchangeService currencyExchangeService;
 
-    public TransferService(TransferRepository transferRepository, UserContext userContext, AccountRepository accountRepository, UserRepository userRepository) {
+    public TransferService(TransferRepository transferRepository, UserContext userContext, AccountRepository accountRepository, UserRepository userRepository, CurrencyExchangeService currencyExchangeService) {
         this.transferRepository = transferRepository;
         this.userContext = userContext;
         this.accountRepository = accountRepository;
         this.userRepository = userRepository;
+        this.currencyExchangeService = currencyExchangeService;
     }
-
 
     @Transactional
     public void transferFromAccount(TransferFromAccountRequest transferRequest) {
@@ -58,16 +59,25 @@ public class TransferService {
         boolean targetAccountActive = targetAccount.getActive();
         boolean sameCurrency = sourceAccount.getCurrency().equals(targetAccount.getCurrency());
 
+        BigDecimal amountToTransfer= transferRequest.getAmount();
+
+        if (!sameCurrency){
+            // TODO usunąć souta
+            System.out.println("doszło do wymiany walut?");
+            amountToTransfer= currencyExchangeService.exchangeCurrencyDuringTransfer(sourceAccount.getCurrency()
+                    ,targetAccount.getCurrency()
+                    , amountToTransfer);
+        }
 
         if (sameUser
                 && enoughCash
                 && sourceAccountActive
                 && targetAccountActive
-                && sameCurrency) {
+                ) {
 
             TransferEntity transferEntity = new TransferEntity();
 
-            transferCashBetweenAccount(transferRequest, sourceAccount, targetAccount);
+            transferCashBetweenAccount(amountToTransfer,transferRequest,sourceAccount,targetAccount);
 
             transferEntity.setTransferData(LocalDateTime.now());
             transferEntity.setUserEntity(userContext.getCurrentUser());
@@ -128,11 +138,11 @@ public class TransferService {
 
     }
 
-    private void transferCashBetweenAccount(TransferFromAccountRequest transferRequest, AccountEntity sourceAccount, AccountEntity targetAccount) {
+    private void transferCashBetweenAccount(BigDecimal amount, TransferFromAccountRequest transferRequest, AccountEntity sourceAccount, AccountEntity targetAccount) {
         sourceAccount.setAmount(sourceAccount.getAmount().subtract(transferRequest.getAmount()));
         sourceAccount.setUpdatedOn(LocalDateTime.now());
 
-        targetAccount.setAmount(targetAccount.getAmount().add(transferRequest.getAmount()));
+        targetAccount.setAmount(targetAccount.getAmount().add(amount));
         targetAccount.setUpdatedOn(LocalDateTime.now());
     }
 

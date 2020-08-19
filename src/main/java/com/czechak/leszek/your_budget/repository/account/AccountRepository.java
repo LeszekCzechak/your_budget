@@ -1,7 +1,7 @@
-package com.czechak.leszek.your_budget.model.account;
+package com.czechak.leszek.your_budget.repository.account;
 
-import com.czechak.leszek.your_budget.repository.AccountEntity;
-import com.czechak.leszek.your_budget.repository.UserEntity;
+import com.czechak.leszek.your_budget.model.AccountEntity;
+import com.czechak.leszek.your_budget.model.UserEntity;
 
 import java.util.List;
 import java.util.Optional;

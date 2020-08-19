@@ -1,7 +1,7 @@
 package com.czechak.leszek.your_budget.dto.purpose;
 
 import com.czechak.leszek.your_budget.dto.category.CategoryResponse;
-import com.czechak.leszek.your_budget.repository.Currency;
+import com.czechak.leszek.your_budget.model.Currency;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

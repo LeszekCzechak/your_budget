@@ -1,6 +1,6 @@
 package com.czechak.leszek.your_budget.dto.account;
 
-import com.czechak.leszek.your_budget.repository.Currency;
+import com.czechak.leszek.your_budget.model.Currency;
 import lombok.Data;
 
 import java.math.BigDecimal;

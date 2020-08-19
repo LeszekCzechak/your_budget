@@ -1,41 +1,21 @@
 income
 expense
 
-UserController przyjmuje Body i przypisuje je do odpowiedniej klasy Request w dto,
-Następnie UserController odpala metodę z UserService (wysyłając tam obiekt z Request w dto),
-metoda ta tworzy obiekt/edytuje obiekt UserEntity  i zapisuje go do bazy danych
-
-
 usunięcie subkont- transer na konto główne?
-
-dodać typ wydatku dla purpose
-
-
-description- klucz obcy do transferu (id)- stworzenie oddzielnej tabelki na opis transferu
-nazwy kolumn w bazie danych zapisać @Colum(name- "fasda")
-
-środowisko testujące-
 
 initSQL- to ogarnąć w najbliższym czasie
 
-1. ograniczyć możliwość transferów z purpose -done
 2. skonstruowac hierarchię wyjątków
-3. ograniczyć doładowanie purpose - done
 4(10). description- klucz obcy do transferu (id) - mam description jako String w TransferEntity
         - nie wiem po co mam to zmieniać?
-5. utworzyć typy wydatków, zawiera typ(opis) i użytkownika- done
 6(20). internacjonalizacja
 7. basic security
 8. dodac tabele, id user oraz role
 9. suma hajsu na wszystkich kontach
-10. Co zrobić z Commitem Patryka, którym naprawiał mój kod?
-11.podmienić repossitory z model
 12. opcjonalne dodawanie daty dokonania transferu- jeśli brak dto domyślnie now()
 
 
 Edycja konta
 Edycja wydatku
 
-
-Your API key: ea70119607c64246fa2b4115
-Example request: https://v6.exchangerate-api.com/v6/ea70119607c64246fa2b4115/latest/USD
+https://api.ratesapi.io/api/2010-01-12?base=USD&symbols=GBP

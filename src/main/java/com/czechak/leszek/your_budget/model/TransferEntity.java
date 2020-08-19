@@ -1,4 +1,4 @@
-package com.czechak.leszek.your_budget.repository;
+package com.czechak.leszek.your_budget.model;
 
 import lombok.Data;
 
@@ -21,6 +21,8 @@ public class TransferEntity {
     @ManyToOne
     private AccountEntity targetAccount;
     private BigDecimal amount;
+    //TODO dodać tu pole waluty source z której się przelewa hajsy
+//    private Currency currency;
     private LocalDateTime transferData;
     private String description;
 

@@ -4,12 +4,12 @@ import com.czechak.leszek.your_budget.dto.purpose.CreatePurposeRequest;
 import com.czechak.leszek.your_budget.dto.purpose.EditPurposeRequest;
 import com.czechak.leszek.your_budget.dto.purpose.GetPurposesResponse;
 import com.czechak.leszek.your_budget.dto.purpose.Purpose;
-import com.czechak.leszek.your_budget.model.account.AccountRepository;
-import com.czechak.leszek.your_budget.model.category.CategoryRepository;
-import com.czechak.leszek.your_budget.model.purpose.PurposeRepository;
-import com.czechak.leszek.your_budget.repository.AccountEntity;
-import com.czechak.leszek.your_budget.repository.CategoryEntity;
-import com.czechak.leszek.your_budget.repository.PurposeEntity;
+import com.czechak.leszek.your_budget.repository.account.AccountRepository;
+import com.czechak.leszek.your_budget.repository.category.CategoryRepository;
+import com.czechak.leszek.your_budget.repository.purpose.PurposeRepository;
+import com.czechak.leszek.your_budget.model.AccountEntity;
+import com.czechak.leszek.your_budget.model.CategoryEntity;
+import com.czechak.leszek.your_budget.model.PurposeEntity;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;

@@ -1,6 +1,6 @@
 package com.czechak.leszek.your_budget.external.api.nbpwebapi.model;
 
-import com.czechak.leszek.your_budget.repository.Currency;
+import com.czechak.leszek.your_budget.model.Currency;
 import lombok.Data;
 
 import java.math.BigDecimal;

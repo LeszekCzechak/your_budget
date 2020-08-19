@@ -3,8 +3,8 @@ package com.czechak.leszek.your_budget.service;
 import com.czechak.leszek.your_budget.dto.category.CategoryResponse;
 import com.czechak.leszek.your_budget.dto.category.CreateCategoryRequest;
 import com.czechak.leszek.your_budget.dto.category.GetCategoryResponse;
-import com.czechak.leszek.your_budget.model.category.CategoryRepository;
-import com.czechak.leszek.your_budget.repository.CategoryEntity;
+import com.czechak.leszek.your_budget.repository.category.CategoryRepository;
+import com.czechak.leszek.your_budget.model.CategoryEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

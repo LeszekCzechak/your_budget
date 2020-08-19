@@ -2,15 +2,12 @@ package com.czechak.leszek.your_budget.service;
 
 import com.czechak.leszek.your_budget.dto.query.AllTransfersByAccountId;
 import com.czechak.leszek.your_budget.dto.query.AllTransfersByAccountIdResponse;
-import com.czechak.leszek.your_budget.dto.query.GetAllTransfersByAccountIdRequest;
-import com.czechak.leszek.your_budget.model.transfer.TransferRepository;
-import com.czechak.leszek.your_budget.model.user.UserRepository;
-import com.czechak.leszek.your_budget.repository.TransferEntity;
+import com.czechak.leszek.your_budget.repository.transfer.TransferRepository;
+import com.czechak.leszek.your_budget.repository.user.UserRepository;
+import com.czechak.leszek.your_budget.model.TransferEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 

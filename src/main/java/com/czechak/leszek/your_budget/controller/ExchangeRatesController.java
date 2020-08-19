@@ -23,4 +23,6 @@ public class ExchangeRatesController {
         return  ResponseEntity.ok(exchangeRatesService.getExchanges());
     }
 
+
+
 }
