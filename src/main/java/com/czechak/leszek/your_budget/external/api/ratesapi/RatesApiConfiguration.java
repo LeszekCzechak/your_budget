@@ -8,7 +8,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 public class RatesApiConfiguration {
 
     @Bean
-    public WebClient webClient(){
+    public WebClient webClient() {
         return WebClient.builder()
                 .baseUrl("https://api.ratesapi.io/api")
                 .build();
