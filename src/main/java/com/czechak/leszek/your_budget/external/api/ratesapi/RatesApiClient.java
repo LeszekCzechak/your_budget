@@ -40,8 +40,6 @@ public class RatesApiClient {
                 new ParameterizedTypeReference<CurrencyExchangeResponse>(){}
         );
 
-        // TODO usunąc sout
-        System.out.println("utworzono body");
         System.out.println(response.toString());
 
         return response.getBody();

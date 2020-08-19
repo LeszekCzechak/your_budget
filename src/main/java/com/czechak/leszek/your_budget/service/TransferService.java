@@ -62,8 +62,6 @@ public class TransferService {
         BigDecimal amountToTransfer= transferRequest.getAmount();
 
         if (!sameCurrency){
-            // TODO usunąć souta
-            System.out.println("doszło do wymiany walut?");
             amountToTransfer= currencyExchangeService.exchangeCurrencyDuringTransfer(sourceAccount.getCurrency()
                     ,targetAccount.getCurrency()
                     , amountToTransfer);

@@ -22,7 +22,7 @@ public class CurrencyExchangeService {
         CurrencyExchangeResponse currencyExchangeResponse = ratesApiClient.currencyExchange( target, source, LocalDate.now());
 
         //TODO poniżej .getUsdRate() powinno się zmienić .getPlnRate() jeśli konwertujemy na PLN
-        BigDecimal response= (currencyExchangeResponse.getRates().getUsdRate()).multiply(amountToTransfer);
+        BigDecimal response= (currencyExchangeResponse.getRates().getAmount()).multiply(amountToTransfer);
 
         return response;
     }
