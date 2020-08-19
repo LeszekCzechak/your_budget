@@ -19,7 +19,7 @@ public class ExchangeRatesService {
 
 
     public Collection<ExchangeRate> getExchanges() {
-        //normalnie tutaj przepakowanie na docelowy typ danych
+        //TODO przepakowanie na docelowy typ danych
         return nbpApiClient.getExchangeRates();
     }
 }
