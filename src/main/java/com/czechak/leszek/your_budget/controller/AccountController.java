@@ -4,6 +4,8 @@ package com.czechak.leszek.your_budget.controller;
 import com.czechak.leszek.your_budget.dto.account.CreateAccountRequest;
 import com.czechak.leszek.your_budget.dto.account.GetAccountsResponse;
 import com.czechak.leszek.your_budget.service.AccountService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,10 +21,12 @@ public class AccountController {
         this.accountService = accountService;
     }
 
-    @PostMapping("/accounts")
+    @PostMapping(path = "/accounts",
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> createAccount(@RequestBody CreateAccountRequest newAccount) {
         accountService.createAccount(newAccount);
-        return ResponseEntity.ok(null);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping("/accounts")

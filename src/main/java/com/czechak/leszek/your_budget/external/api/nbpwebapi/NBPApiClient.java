@@ -34,8 +34,6 @@ public class NBPApiClient {
                 new ParameterizedTypeReference<List<ExchangeRate>>() {
                 } //ExchangeRate[].class
         );
-
         return response.getBody();
     }
-
 }

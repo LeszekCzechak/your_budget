@@ -27,6 +27,5 @@ public class RatesApiClient {
                 .retrieve()
                 .bodyToMono(CurrencyExchangeResponse.class)
                 .block();
-
     }
 }

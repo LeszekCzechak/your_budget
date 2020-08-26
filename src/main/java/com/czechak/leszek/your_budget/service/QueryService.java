@@ -22,7 +22,6 @@ public class QueryService {
         this.userRepository = userRepository;
     }
 
-
     @Transactional
     public AllTransfersByAccountIdResponse getAllTransfersByAccountId(Long accountId){
 
