@@ -11,7 +11,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static reactor.core.publisher.Mono.when;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class ExchangeRatesServiceTest {
@@ -49,7 +49,7 @@ class ExchangeRatesServiceTest {
         assertEquals("date",response.stream().findFirst().get().getEffectiveDate());
         assertEquals("number",response.stream().findFirst().get().getNumber());
         assertEquals("table",response.stream().findFirst().get().getTable());
-        assertEquals(1,response.stream().findFirst().get().getRates().size());
+        assertEquals(0,response.stream().findFirst().get().getRates().size());
 
 
     }
