@@ -1,6 +1,7 @@
 package com.czechak.leszek.your_budget.service;
 
 import com.czechak.leszek.your_budget.dto.account.CreateAccountRequest;
+import com.czechak.leszek.your_budget.dto.account.GetAccountsResponse;
 import com.czechak.leszek.your_budget.model.AccountEntity;
 import com.czechak.leszek.your_budget.model.Currency;
 import com.czechak.leszek.your_budget.model.UserEntity;
@@ -15,7 +16,11 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
+import java.util.LinkedList;
+import java.util.List;
 
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -26,19 +31,19 @@ class AccountServiceTest {
     @Mock
     private UserContext userContext;
 
-//    @InjectMocks
+    //    @InjectMocks
     private AccountService accountService;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         accountService = new AccountService(accountRepository, userContext);
     }
 
     @Test
-    void shouldCreateNewAccount(){
+    void shouldCreateNewAccount() {
 
         //given
-        CreateAccountRequest accountRequest= new CreateAccountRequest();
+        CreateAccountRequest accountRequest = new CreateAccountRequest();
         accountRequest.setDescription("TestingAccount");
         accountRequest.setCurrency(Currency.PLN);
 
@@ -63,4 +68,30 @@ class AccountServiceTest {
 
     }
 
+    @Test
+    void getAllUserAccounts() {
+
+        //given
+        List<AccountEntity> accountEntitiesByUserEntity = new LinkedList<>();
+        AccountEntity accountEntity = new AccountEntity(1L,
+                new UserEntity(1L, "user", "user", "user@user.com", "user", null, null)
+                , "accountEntity", BigDecimal.TEN, null, null, TRUE, FALSE, Currency.PLN);
+
+        accountEntitiesByUserEntity.add(accountEntity);
+
+        Mockito.when(accountRepository.findAccountEntitiesByUserEntity(userContext.getCurrentUser())).thenReturn(accountEntitiesByUserEntity);
+
+        //when
+        GetAccountsResponse allUserAccounts = accountService.getAllUserAccounts();
+
+        //then
+        assertEquals(1,allUserAccounts.getUserAccounts().size());
+        assertEquals(1L,allUserAccounts.getUserAccounts().get(0).getAccountId());
+        assertEquals(BigDecimal.TEN,allUserAccounts.getUserAccounts().get(0).getAmount());
+        assertEquals(Currency.PLN,allUserAccounts.getUserAccounts().get(0).getCurrency());
+        assertEquals("accountEntity",allUserAccounts.getUserAccounts().get(0).getDescription());
+        assertNull(allUserAccounts.getUserAccounts().get(0).getCratedOn());
+        assertNull(allUserAccounts.getUserAccounts().get(0).getUpdatedOn());
+
+    }
 }

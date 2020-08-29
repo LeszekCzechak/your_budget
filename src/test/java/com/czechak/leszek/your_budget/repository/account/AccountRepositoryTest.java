@@ -10,7 +10,6 @@ import org.springframework.test.context.jdbc.Sql;
 
 import javax.persistence.EntityManager;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -34,6 +33,7 @@ class AccountRepositoryTest {
 
     })
     void shouldFindAccountEntitiesByUserEntity() {
+
         //given
         UserEntity user = userRepository.findById(999L).get();
 
@@ -46,6 +46,4 @@ class AccountRepositoryTest {
         assertEquals("MainAccount2", accountEntitiesByUserEntity.get(0).getDescription());
 
     }
-
-    //findAccountEntitiesByUserEntity(UserEntity userEntity);
 }
