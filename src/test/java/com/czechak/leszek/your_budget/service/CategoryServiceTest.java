@@ -43,7 +43,7 @@ class CategoryServiceTest {
     }
 
     @Test
-    void ShouldCreateCategory() {
+    void shouldCreateCategory() {
 
         //given
         CreateCategoryRequest newCategory = new CreateCategoryRequest();
@@ -68,7 +68,7 @@ class CategoryServiceTest {
     }
 
     @Test
-    void ShouldReturnAllCategories() {
+    void shouldReturnAllCategories() {
 
         //given
         List<CategoryEntity> categoryEntities = new LinkedList<>();
@@ -92,7 +92,7 @@ class CategoryServiceTest {
     }
 
     @Test
-    void ShouldReturnCategoryByCategoryId() {
+    void shouldReturnCategoryByCategoryId() {
         //given
         CategoryEntity categoryEntity = new CategoryEntity(1L,3L,"CategoryName","CategoryDesc");
 
