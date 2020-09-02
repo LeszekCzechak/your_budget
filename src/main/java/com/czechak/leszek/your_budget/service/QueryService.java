@@ -8,6 +8,8 @@ import com.czechak.leszek.your_budget.model.TransferEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,6 +22,29 @@ public class QueryService {
     public QueryService(TransferRepository transferRepository, UserRepository userRepository) {
         this.transferRepository = transferRepository;
         this.userRepository = userRepository;
+    }
+
+    @Transactional
+    public List<AllTransfersByAccountId> getAllTransfersByIdAndDates(){
+        List<TransferEntity> allBySelectedAccountAndTransferDataBetween = transferRepository.getAllBySelectedAccountAndTransferDataBetween(1L, LocalDateTime.MIN, LocalDateTime.MAX);
+
+        return allBySelectedAccountAndTransferDataBetween.stream()
+                .map(x -> {
+                    AllTransfersByAccountId transfers = new AllTransfersByAccountId();
+                    transfers.setTransferId(x.getTransferId());
+                    transfers.setUserId(x.getUserEntity().getUserId());
+                    transfers.setSourceAccountId(x.getSelectedAccount().getAccountId());
+                    transfers.setSourceAccountDescription(x.getSelectedAccount().getDescription());
+                    transfers.setTargetAccountId(x.getTargetAccount().getAccountId());
+                    transfers.setTargetAccountDescription(x.getTargetAccount().getDescription());
+                    transfers.setTransferAmount(x.getAmount());
+                    transfers.setTransferData(x.getTransferData());
+                    transfers.setTransferDescription(x.getDescription());
+                    return transfers;
+
+                })
+                .collect(Collectors.toList());
+
     }
 
     @Transactional
