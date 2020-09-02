@@ -16,6 +16,4 @@ interface SqlTransferRepository extends TransferRepository, JpaRepository<Transf
     @Query("SELECT transfer FROM TransferEntity transfer WHERE transfer.selectedAccount.accountId = :accountId OR transfer.targetAccount.accountId = :accountId")
     List<TransferEntity> getAllTransferByAccountId(@Param("accountId")Long accountId);
 
-    List<TransferEntity> getAllBySelectedAccountAndTransferDataBetween(AccountEntity id, LocalDateTime from, LocalDateTime to);
-
 }

@@ -25,11 +25,4 @@ public class TransferHistoryController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/test")
-    public List<AllTransfersByAccountId> test(){
-        return queryService.getAllTransfersByIdAndDates();
-    }
-
-
-
 }

@@ -25,29 +25,6 @@ public class QueryService {
     }
 
     @Transactional
-    public List<AllTransfersByAccountId> getAllTransfersByIdAndDates(){
-        List<TransferEntity> allBySelectedAccountAndTransferDataBetween = transferRepository.getAllBySelectedAccountAndTransferDataBetween(1L, LocalDateTime.MIN, LocalDateTime.MAX);
-
-        return allBySelectedAccountAndTransferDataBetween.stream()
-                .map(x -> {
-                    AllTransfersByAccountId transfers = new AllTransfersByAccountId();
-                    transfers.setTransferId(x.getTransferId());
-                    transfers.setUserId(x.getUserEntity().getUserId());
-                    transfers.setSourceAccountId(x.getSelectedAccount().getAccountId());
-                    transfers.setSourceAccountDescription(x.getSelectedAccount().getDescription());
-                    transfers.setTargetAccountId(x.getTargetAccount().getAccountId());
-                    transfers.setTargetAccountDescription(x.getTargetAccount().getDescription());
-                    transfers.setTransferAmount(x.getAmount());
-                    transfers.setTransferData(x.getTransferData());
-                    transfers.setTransferDescription(x.getDescription());
-                    return transfers;
-
-                })
-                .collect(Collectors.toList());
-
-    }
-
-    @Transactional
     public AllTransfersByAccountIdResponse getAllTransfersByAccountId(Long accountId){
 
         List<TransferEntity> allTransfersByAccountId = transferRepository.getAllTransferByAccountId(accountId);

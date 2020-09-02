@@ -11,6 +11,4 @@ public interface TransferRepository {
 
     List<TransferEntity> getAllTransferByAccountId(Long accountId);
 
-    List<TransferEntity> getAllBySelectedAccountAndTransferDataBetween(Long id, LocalDateTime from, LocalDateTime to);
-
 }
