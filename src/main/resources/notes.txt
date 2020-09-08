@@ -18,4 +18,4 @@ initSQL- to ogarnąć w najbliższym czasie
 Edycja konta
 Edycja wydatku
 
-https://api.ratesapi.io/api/2010-01-12?base=USD&symbols=GBP
+localhost:8080/v2/api-docs
