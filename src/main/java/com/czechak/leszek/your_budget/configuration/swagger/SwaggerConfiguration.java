@@ -2,8 +2,14 @@ package com.czechak.leszek.your_budget.configuration.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.ApiKey;
+import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
+
+import java.time.LocalDate;
+import java.util.Collections;
 
 import static springfox.documentation.builders.RequestHandlerSelectors.basePackage;
 
@@ -16,7 +22,26 @@ public class SwaggerConfiguration {
                 .select()
                 .apis(basePackage("com.czechak.leszek.your_budget.controller"))
                 .build()
-                .pathMapping("/");
+                .pathMapping("/")
+                .directModelSubstitute(LocalDate.class, String.class)
+                .apiInfo(apiInfo())
+                //TODO uzupełnić, gdy dodam security
+//              .securitySchemes(Collections.singletonList(apiKey))
+                ;
     }
+
+    private ApiInfo apiInfo() {
+        return new ApiInfo(
+                "MY BUDGET API",
+                "Plan your budget",
+                "0.1",
+                null,
+                new Contact("Leszek Czechak", null, "leszek.czechak@gmail.com"),
+              null,
+                null,
+                Collections.EMPTY_LIST
+        );
+    }
+
 
 }
