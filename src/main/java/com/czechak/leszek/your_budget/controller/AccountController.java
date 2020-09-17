@@ -4,6 +4,7 @@ package com.czechak.leszek.your_budget.controller;
 import com.czechak.leszek.your_budget.dto.account.CreateAccountRequest;
 import com.czechak.leszek.your_budget.dto.account.GetAccountsResponse;
 import com.czechak.leszek.your_budget.service.AccountService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,8 @@ public class AccountController {
     @PostMapping(path = "/accounts",
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
+  // TODO why there is an ERROR?
+    @ApiOperation(value = "Creates account for User", notes = "Provide RequestBody to create account")
     public ResponseEntity<Void> createAccount(@RequestBody CreateAccountRequest newAccount) {
         accountService.createAccount(newAccount);
         return new ResponseEntity<>(HttpStatus.CREATED);
