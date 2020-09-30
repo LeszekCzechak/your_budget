@@ -89,7 +89,7 @@ class CategoryServiceTest {
     @Test
     void shouldReturnCategoryByCategoryId() {
         //given
-        CategoryEntity categoryEntity = new CategoryEntity(1L,3L,"CategoryName","CategoryDesc");
+        CategoryEntity categoryEntity = new CategoryEntity(1L, 3L,"CategoryName","CategoryDesc");
 
         when(categoryRepository.findCategoryByCategoryId(1L)).thenReturn(categoryEntity);
 

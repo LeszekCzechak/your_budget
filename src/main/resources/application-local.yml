@@ -15,10 +15,7 @@ spring:
       ddl-auto: create-drop
     show-sql: true
 
-  security:
-    user:
-      name: admin
-      password: admin
+
 
 #server:
 #  port: 8180
