@@ -3,6 +3,7 @@ package com.czechak.leszek.your_budget.configuration.util;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -14,8 +15,8 @@ import java.util.function.Function;
 @Service
 public class JwtUtil {
 
-    // TODO add key to properties;
-    private final String SECRET_KEY = "secret";
+    @Value("${JWTSecretKey}")
+    private String SECRET_KEY;
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
         final Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);
