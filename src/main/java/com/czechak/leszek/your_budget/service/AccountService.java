@@ -57,7 +57,7 @@ public class AccountService {
                     account.setCratedOn(x.getCratedOn());
                     account.setDescription(x.getDescription());
                     account.setUpdatedOn(x.getUpdatedOn());
-                    account.setUserId(x.getUserEntity().getUserId());
+                    account.setUserId(x.getUserEntity().getId());
                     account.setCurrency(x.getCurrency());
                     return account;
                 })

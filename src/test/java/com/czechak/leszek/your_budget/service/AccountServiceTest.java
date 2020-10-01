@@ -5,6 +5,7 @@ import com.czechak.leszek.your_budget.dto.account.GetAccountsResponse;
 import com.czechak.leszek.your_budget.model.AccountEntity;
 import com.czechak.leszek.your_budget.model.Currency;
 import com.czechak.leszek.your_budget.model.UserEntity;
+import com.czechak.leszek.your_budget.model.UserRole;
 import com.czechak.leszek.your_budget.repository.account.AccountRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,8 +16,10 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
@@ -72,7 +75,7 @@ class AccountServiceTest {
         //given
         List<AccountEntity> accountEntitiesByUserEntity = new LinkedList<>();
         AccountEntity accountEntity = new AccountEntity(1L,
-                new UserEntity(1L, "user", "user", "user@user.com", "user", null, null)
+                new UserEntity(1L, "user", "user", "user@user.com", LocalDateTime.MAX,LocalDateTime.now(),"user", Set.of(UserRole.USER),true,true,true,true)
                 , "accountEntity", BigDecimal.TEN, null, null, TRUE, FALSE, Currency.PLN);
 
         accountEntitiesByUserEntity.add(accountEntity);

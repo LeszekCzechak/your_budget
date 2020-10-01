@@ -1,6 +1,13 @@
 package com.czechak.leszek.your_budget.model;
 
-public enum UserRole {
+import org.springframework.security.core.GrantedAuthority;
 
-    USER,ADMIN
+public enum UserRole implements GrantedAuthority {
+
+    USER,ADMIN;
+
+    @Override
+    public String getAuthority() {
+        return "ROLE_"+this.name();
+    }
 }

@@ -8,8 +8,6 @@ import com.czechak.leszek.your_budget.model.TransferEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,7 +31,7 @@ public class QueryService {
                 .map(x -> {
                     AllTransfersByAccountId transfers = new AllTransfersByAccountId();
                     transfers.setTransferId(x.getTransferId());
-                    transfers.setUserId(x.getUserEntity().getUserId());
+                    transfers.setUserId(x.getUserEntity().getId());
                     transfers.setSourceAccountId(x.getSelectedAccount().getAccountId());
                     transfers.setSourceAccountDescription(x.getSelectedAccount().getDescription());
                     transfers.setTargetAccountId(x.getTargetAccount().getAccountId());

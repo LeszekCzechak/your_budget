@@ -27,14 +27,14 @@ public class CategoryService {
 
         categoryEntity.setName(newCategory.getName());
         categoryEntity.setDescription(newCategory.getDescription());
-        categoryEntity.setUserId(userContext.getCurrentUser().getUserId());
+        categoryEntity.setUserId(userContext.getCurrentUser().getId());
         categoryRepository.save(categoryEntity);
     }
 
 
     public GetCategoryResponse getCategories() {
 
-        List<CategoryEntity> categoryEntitiesByUserId = categoryRepository.findCategoryByUser(userContext.getCurrentUser().getUserId());
+        List<CategoryEntity> categoryEntitiesByUserId = categoryRepository.findCategoryByUser(userContext.getCurrentUser().getId());
 
         List<CategoryResponse> categoryResponses = categoryEntitiesByUserId
                 .stream()

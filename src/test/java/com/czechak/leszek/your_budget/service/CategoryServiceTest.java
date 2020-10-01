@@ -46,7 +46,7 @@ class CategoryServiceTest {
         newCategory.setDescription("desc for test");
 
         UserEntity userEntity = new UserEntity();
-        userEntity.setUserId(1L);
+        userEntity.setId(1L);
         when(userContext.getCurrentUser()).thenReturn(userEntity);
 
         //when
@@ -71,7 +71,7 @@ class CategoryServiceTest {
         categoryEntities.add(categoryEntity);
 
         UserEntity userEntity = new UserEntity();
-        userEntity.setUserId(1L);
+        userEntity.setId(1L);
         when(userContext.getCurrentUser()).thenReturn(userEntity);
         when(categoryRepository.findCategoryByUser(1L)).thenReturn(categoryEntities);
 

@@ -58,7 +58,7 @@ public class PurposeService {
 
     public GetPurposesResponse getAllUserPurposes() {
 
-        List<PurposeEntity> purposeEntityList = purposeRepository.findPurposesByUser(userContext.getCurrentUser().getUserId());
+        List<PurposeEntity> purposeEntityList = purposeRepository.findPurposesByUser(userContext.getCurrentUser().getId());
 
         GetPurposesResponse getPurposesResponse = new GetPurposesResponse();
 
@@ -73,7 +73,7 @@ public class PurposeService {
                             purpose.setCreatedOn(x.getCratedOn());
                             purpose.setDescription((x.getDescription()));
                             purpose.setUpdatedOn(x.getUpdatedOn());
-                            purpose.setUserId(x.getUserEntity().getUserId());
+                            purpose.setUserId(x.getUserEntity().getId());
                             purpose.setCategoryResponse(categoryService.getCategoryResponseById(x.getCategory().getCategoryId()));
                             purpose.setCurrency(x.getCurrency());
                             return purpose;
