@@ -10,6 +10,7 @@ import com.czechak.leszek.your_budget.repository.user.UserRepository;
 import com.czechak.leszek.your_budget.model.AccountEntity;
 import com.czechak.leszek.your_budget.model.PurposeEntity;
 import com.czechak.leszek.your_budget.model.TransferEntity;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,22 +18,16 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
+@RequiredArgsConstructor
 @Service
 public class TransferService {
 
-    private final TransferRepository transferRepository;
-    private final UserContext userContext;
-    private final AccountRepository accountRepository;
-    private final UserRepository userRepository;
-    private final CurrencyExchangeService currencyExchangeService;
+    private TransferRepository transferRepository;
+    private UserContext userContext;
+    private AccountRepository accountRepository;
+    private UserRepository userRepository;
+    private CurrencyExchangeService currencyExchangeService;
 
-    public TransferService(TransferRepository transferRepository, UserContext userContext, AccountRepository accountRepository, UserRepository userRepository, CurrencyExchangeService currencyExchangeService) {
-        this.transferRepository = transferRepository;
-        this.userContext = userContext;
-        this.accountRepository = accountRepository;
-        this.userRepository = userRepository;
-        this.currencyExchangeService = currencyExchangeService;
-    }
 
     @Transactional
     public void transferFromAccount(TransferFromAccountRequest transferRequest) {

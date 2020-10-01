@@ -5,22 +5,19 @@ import com.czechak.leszek.your_budget.dto.query.AllTransfersByAccountIdResponse;
 import com.czechak.leszek.your_budget.repository.transfer.TransferRepository;
 import com.czechak.leszek.your_budget.repository.user.UserRepository;
 import com.czechak.leszek.your_budget.model.TransferEntity;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@RequiredArgsConstructor
 @Service
 public class QueryService {
 
-    private final TransferRepository transferRepository;
-    private final UserRepository userRepository;
-
-    public QueryService(TransferRepository transferRepository, UserRepository userRepository) {
-        this.transferRepository = transferRepository;
-        this.userRepository = userRepository;
-    }
+    private TransferRepository transferRepository;
+    private UserRepository userRepository;
 
     @Transactional
     public AllTransfersByAccountIdResponse getAllTransfersByAccountId(Long accountId){

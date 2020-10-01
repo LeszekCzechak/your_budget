@@ -37,7 +37,7 @@ class AccountServiceTest {
 
     @BeforeEach
     void setUp() {
-        accountService = new AccountService(accountRepository, userContext);
+        accountService = new AccountService();
     }
 
     @Test

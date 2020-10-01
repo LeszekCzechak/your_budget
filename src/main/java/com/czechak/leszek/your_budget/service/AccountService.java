@@ -5,6 +5,7 @@ import com.czechak.leszek.your_budget.dto.account.CreateAccountRequest;
 import com.czechak.leszek.your_budget.dto.account.GetAccountsResponse;
 import com.czechak.leszek.your_budget.repository.account.AccountRepository;
 import com.czechak.leszek.your_budget.model.AccountEntity;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,17 +14,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@RequiredArgsConstructor
 @Service
 public class AccountService {
 
-    private final AccountRepository repository;
-    private final UserContext userContext;
-
-    public AccountService(AccountRepository repository, UserContext userContext) {
-
-        this.repository = repository;
-        this.userContext = userContext;
-    }
+    private AccountRepository repository;
+    private UserContext userContext;
 
     public void createAccount(CreateAccountRequest requestAccount) {
 

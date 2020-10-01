@@ -6,6 +6,10 @@ import com.czechak.leszek.your_budget.dto.user.GetUserResponse;
 import com.czechak.leszek.your_budget.model.UserRole;
 import com.czechak.leszek.your_budget.repository.user.UserRepository;
 import com.czechak.leszek.your_budget.model.UserEntity;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -14,17 +18,13 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
-
+@RequiredArgsConstructor
 @Service
 public class UserService implements UserDetailsService {
 
-    private final UserRepository userRepository;
-    private final UserContext userContext;
+    private UserRepository userRepository;
+    private UserContext userContext;
 
-    public UserService(UserRepository userRepository, UserContext userContext) {
-        this.userRepository = userRepository;
-        this.userContext = userContext;
-    }
 
     public void createUser (CreateUserRequest requestUser){
 

@@ -7,10 +7,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
+
 @Service
 public class ExchangeRatesService {
 
-    private final NBPApiClient nbpApiClient;
+    private NBPApiClient nbpApiClient;
 
     @Autowired
     public ExchangeRatesService(NBPApiClient nbpApiClient) {

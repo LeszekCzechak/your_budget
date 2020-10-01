@@ -27,7 +27,7 @@ class CurrencyExchangeServiceTest {
 
     @BeforeEach
     void setUp() {
-        currencyExchangeService = new CurrencyExchangeService(ratesApiClient);
+        currencyExchangeService = new CurrencyExchangeService();
     }
 
     @Test

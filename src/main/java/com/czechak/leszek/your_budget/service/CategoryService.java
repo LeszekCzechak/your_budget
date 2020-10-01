@@ -5,21 +5,19 @@ import com.czechak.leszek.your_budget.dto.category.CreateCategoryRequest;
 import com.czechak.leszek.your_budget.dto.category.GetCategoryResponse;
 import com.czechak.leszek.your_budget.repository.category.CategoryRepository;
 import com.czechak.leszek.your_budget.model.CategoryEntity;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@RequiredArgsConstructor
 @Service
 public class CategoryService {
 
-    private final CategoryRepository categoryRepository;
-    private final UserContext userContext;
+    private CategoryRepository categoryRepository;
+    private UserContext userContext;
 
-    public CategoryService(CategoryRepository categoryRepository, UserContext userContext) {
-        this.categoryRepository = categoryRepository;
-        this.userContext = userContext;
-    }
 
     public void createCategory(CreateCategoryRequest newCategory) {
 

@@ -33,7 +33,7 @@ class CategoryServiceTest {
 
     @BeforeEach
     void setUp() {
-        categoryService = new CategoryService(categoryRepository, userContext);
+        categoryService = new CategoryService();
 
     }
 
