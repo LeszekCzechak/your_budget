@@ -23,8 +23,7 @@ public class SwaggerConfiguration {
                 .build()
                 .pathMapping("/")
                 .directModelSubstitute(LocalDate.class, String.class)
-                .apiInfo(apiInfo())
-                ;
+                .apiInfo(apiInfo());
     }
 
     private ApiInfo apiInfo() {
