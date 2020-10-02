@@ -29,9 +29,9 @@ public class UserService implements UserDetailsService {
     }
 
 
-    public void createUser (CreateUserRequest requestUser){
+    public void createUser(CreateUserRequest requestUser) {
 
-        UserEntity userEntity= new UserEntity();
+        UserEntity userEntity = new UserEntity();
         userEntity.setUsername(requestUser.getLogin());
         userEntity.setPassword(passwordEncoder.encode(requestUser.getPassword()));
         userEntity.setCreateUserDate(LocalDateTime.now());
@@ -47,16 +47,16 @@ public class UserService implements UserDetailsService {
 
 
     public void editUser(EditUserRequest editUser) {
-        UserEntity userEntity= userContext.getCurrentUser();
+        UserEntity userEntity = userContext.getCurrentUser();
         userEntity.setUsername(editUser.getLogin());
         userEntity.setUpdatedOn(LocalDateTime.now());
         userRepository.save(userEntity);
     }
 
-    public GetUserResponse getCurrentUser(){
+    public GetUserResponse getCurrentUser() {
         UserEntity currentUser = userContext.getCurrentUser();
 
-        GetUserResponse getUserResponse= new GetUserResponse();
+        GetUserResponse getUserResponse = new GetUserResponse();
 
         getUserResponse.setLogin(currentUser.getUsername());
         getUserResponse.setCreateUserDate(currentUser.getCreateUserDate());
@@ -68,12 +68,12 @@ public class UserService implements UserDetailsService {
 
     }
 
-    public GetUserResponse getUserResponseByUserId (Long userId){
+    public GetUserResponse getUserResponseByUserId(Long userId) {
 
         Optional<UserEntity> optionalUserEntity = userRepository.findById(userId);
-        UserEntity userEntity= optionalUserEntity.get();
+        UserEntity userEntity = optionalUserEntity.get();
 
-        GetUserResponse getUserResponse= new GetUserResponse();
+        GetUserResponse getUserResponse = new GetUserResponse();
 
         getUserResponse.setLogin(userEntity.getUsername());
         getUserResponse.setPassword(userEntity.getPassword());
@@ -88,10 +88,10 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) {
         Optional<UserDetails> response = userRepository.loadUserByUsername(username);
-        if(response.isPresent()){
-            System.out.println(response.get().getUsername());
-            System.out.println(response.get().getPassword());
+        if (response.isPresent()) {
+            System.out.println("user from database: " + response.get().getUsername());
+            System.out.println("his password: " + response.get().getPassword());
         }
-        return response.orElseThrow(()-> new UsernameNotFoundException(String.format("Username %s not found",username)));
+        return response.orElseThrow(() -> new UsernameNotFoundException(String.format("Username %s not found", username)));
     }
 }
