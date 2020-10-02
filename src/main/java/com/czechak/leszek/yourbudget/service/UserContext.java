@@ -10,16 +10,13 @@ import java.util.Optional;
 @Component
 public class UserContext {
 
+    private UserEntity userEntity;
 
-    private final UserRepository userRepository;
-
-    public UserContext(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
     }
 
     public UserEntity getCurrentUser() {
-        Optional<UserEntity> optionalUserEntity = userRepository.findById(1L);
-        UserEntity userEntity = optionalUserEntity.get();
         return userEntity;
     }
 }

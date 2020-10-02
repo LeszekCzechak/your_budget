@@ -1,6 +1,8 @@
 package com.czechak.leszek.yourbudget.configuration.filter;
 
 import com.czechak.leszek.yourbudget.configuration.util.JwtUtil;
+import com.czechak.leszek.yourbudget.model.UserEntity;
+import com.czechak.leszek.yourbudget.service.UserContext;
 import com.czechak.leszek.yourbudget.service.UserService;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,12 +23,13 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
     private final UserService userService;
     private final JwtUtil jwtUtil;
+    private final UserContext userContext;
 
-    public JwtRequestFilter(UserService userService, JwtUtil jwtUtil) {
+    public JwtRequestFilter(UserService userService, JwtUtil jwtUtil, UserContext userContext) {
         this.userService = userService;
         this.jwtUtil = jwtUtil;
+        this.userContext = userContext;
     }
-
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
@@ -44,6 +47,9 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() ==null){
             UserDetails userDetails= this.userService.loadUserByUsername(username);
+            if (userDetails instanceof UserEntity){
+                userContext.setUserEntity((UserEntity) userDetails);
+            }
 
             UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken= new UsernamePasswordAuthenticationToken(
                     userDetails, null, userDetails.getAuthorities());
