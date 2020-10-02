@@ -1,16 +1,9 @@
-income
-expense
-
 usunięcie subkont- transer na konto główne?
 
 initSQL- to ogarnąć w najbliższym czasie
 
 2. skonstruowac hierarchię wyjątków
-4(10). description- klucz obcy do transferu (id) - mam description jako String w TransferEntity
-        - nie wiem po co mam to zmieniać?
 6(20). internacjonalizacja
-7. basic security
-8. dodac tabele, id user oraz role
 9. suma hajsu na wszystkich kontach
 12. opcjonalne dodawanie daty dokonania transferu- jeśli brak dto domyślnie now()
 
@@ -19,5 +12,6 @@ Edycja konta
 Edycja wydatku
 
 localhost:8080/v2/api-docs
+
+SWAGGER:
 http://localhost:8080/swagger-ui/index.html
-#/category-controller
