@@ -19,7 +19,7 @@ public class SwaggerConfiguration {
     public Docket get() {
         return new Docket(DocumentationType.OAS_30)
                 .select()
-                .apis(basePackage("com.czechak.leszek.your_budget.controller"))
+                .apis(basePackage("com.czechak.leszek.yourbudget.controller"))
                 .build()
                 .pathMapping("/")
                 .directModelSubstitute(LocalDate.class, String.class)
@@ -39,6 +39,4 @@ public class SwaggerConfiguration {
                 Collections.EMPTY_LIST
         );
     }
-
-
 }

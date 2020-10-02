@@ -14,8 +14,6 @@ spring:
     sql-dialect: 'org.hibernate.dialect.PostgreSQL95Dialect'
 
 
-
-
 #server:
 #  port: 8180
 #  servlet:
