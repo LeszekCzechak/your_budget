@@ -5,6 +5,7 @@ import com.czechak.leszek.yourbudget.dto.category.CreateCategoryRequest;
 import com.czechak.leszek.yourbudget.dto.category.GetCategoryResponse;
 import com.czechak.leszek.yourbudget.model.CategoryEntity;
 import com.czechak.leszek.yourbudget.service.CategoryService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,7 @@ public class CategoryController {
     @PostMapping("/category")
     public ResponseEntity<Void> createCategory (@RequestBody CreateCategoryRequest newCategory){
        categoryService.createCategory(newCategory);
-        return ResponseEntity.ok(null);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping("/category")

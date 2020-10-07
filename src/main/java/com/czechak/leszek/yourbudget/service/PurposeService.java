@@ -18,16 +18,22 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@RequiredArgsConstructor
 @Service
 public class PurposeService {
 
-    private AccountRepository accountRepository;
-    private PurposeRepository purposeRepository;
-    private CategoryRepository categoryRepository;
-    private UserContext userContext;
-    private CategoryService categoryService;
+    private final AccountRepository accountRepository;
+    private final PurposeRepository purposeRepository;
+    private final CategoryRepository categoryRepository;
+    private final UserContext userContext;
+    private final CategoryService categoryService;
 
+    public PurposeService(AccountRepository accountRepository, PurposeRepository purposeRepository, CategoryRepository categoryRepository, UserContext userContext, CategoryService categoryService) {
+        this.accountRepository = accountRepository;
+        this.purposeRepository = purposeRepository;
+        this.categoryRepository = categoryRepository;
+        this.userContext = userContext;
+        this.categoryService = categoryService;
+    }
 
     public void createPurpose(CreatePurposeRequest createPurposeRequest) {
 
