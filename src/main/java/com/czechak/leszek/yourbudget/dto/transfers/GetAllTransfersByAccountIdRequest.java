@@ -1,4 +1,4 @@
-package com.czechak.leszek.yourbudget.dto.query;
+package com.czechak.leszek.yourbudget.dto.transfers;
 
 
 import lombok.Data;

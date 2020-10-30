@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-interface SqlTransferRepository extends TransferRepository, JpaRepository<TransferEntity, Long> {
+interface SqlTransferRepository extends TransferRepository, SqlTransferRepositoryCustom, JpaRepository<TransferEntity, Long> {
 
     @Query("SELECT transfer FROM TransferEntity transfer WHERE transfer.selectedAccount.accountId = :accountId OR transfer.targetAccount.accountId = :accountId")
     List<TransferEntity> getAllTransferByAccountId(@Param("accountId")Long accountId);

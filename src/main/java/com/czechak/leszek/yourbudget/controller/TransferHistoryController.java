@@ -1,11 +1,12 @@
 package com.czechak.leszek.yourbudget.controller;
 
-import com.czechak.leszek.yourbudget.dto.query.AllTransfersByAccountIdResponse;
+import com.czechak.leszek.yourbudget.dto.transfers.AllTransfersByAccountIdResponse;
+import com.czechak.leszek.yourbudget.dto.transfers.TransferHistorySearchRequest;
 import com.czechak.leszek.yourbudget.service.QueryService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Set;
 
 @RestController
 public class TransferHistoryController {
@@ -20,6 +21,11 @@ public class TransferHistoryController {
     public ResponseEntity<AllTransfersByAccountIdResponse> getAllTransfersByAccountId(@RequestParam("accountId") String accountId) {
         AllTransfersByAccountIdResponse response = queryService.getAllTransfersByAccountId(Long.parseLong(accountId));
         return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/transfer/search")
+    public ResponseEntity<AllTransfersByAccountIdResponse> searchQuery(@RequestBody TransferHistorySearchRequest query){
+        queryService.advancedQuery(query);
     }
 
 }

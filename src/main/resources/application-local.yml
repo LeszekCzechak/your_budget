@@ -8,7 +8,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     show-sql: true
   jooq:
     sql-dialect: 'org.hibernate.dialect.PostgreSQL95Dialect'
