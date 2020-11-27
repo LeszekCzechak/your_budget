@@ -59,8 +59,8 @@ public class QueryService {
         };
     }
 
-
-    public Set<AllTransfersByAccountIdResponse> advancedQuery(TransferHistorySearchRequest query) {
-        transferRepository.
-    }
+//
+//    public Set<AllTransfersByAccountIdResponse> advancedQuery(TransferHistorySearchRequest query) {
+//        transferRepository.
+//    }
 }

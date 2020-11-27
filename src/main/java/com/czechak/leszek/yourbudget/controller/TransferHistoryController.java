@@ -23,9 +23,9 @@ public class TransferHistoryController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping("/transfer/search")
-    public ResponseEntity<AllTransfersByAccountIdResponse> searchQuery(@RequestBody TransferHistorySearchRequest query){
-        queryService.advancedQuery(query);
-    }
+//    @PostMapping("/transfer/search")
+//    public ResponseEntity<AllTransfersByAccountIdResponse> searchQuery(@RequestBody TransferHistorySearchRequest query){
+//        queryService.advancedQuery(query);
+//    }
 
 }
